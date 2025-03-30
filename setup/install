@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ -z $3 ]
+then
+    echo Usage: install project-name username password
+    exit 1
+fi
+
+echo Installing project $1...
+
+ddev config --project-name=$1
+ddev start &&
+ddev composer install &&
+ddev craft install --interactive=0 --username=$2 --password=$3 --email=admin@example.com &&
+ddev npm install &&
+ddev npm run build &&
+ddev describe &&
+echo cd into your project and run 'ddev launch' to open the site in a browser.
+echo Add some images, cd into your project and run 'ddev craft seed' to seed the database.
+
+
+
+

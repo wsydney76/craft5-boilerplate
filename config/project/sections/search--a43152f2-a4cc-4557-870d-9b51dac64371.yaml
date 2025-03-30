@@ -1,0 +1,33 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 569d97bb-e954-4391-8885-c8350b27d0b8 # Title Only
+handle: search
+maxAuthors: 1
+name: Search
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primäre Eintrag Seite'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  982b0231-4baf-4422-b094-3d551c814f69: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: _entries/search/search.twig
+    uriFormat: suche
+  a4f2973e-4934-46f7-af6d-b72af78abade: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: _entries/search/search.twig
+    uriFormat: search
+type: single

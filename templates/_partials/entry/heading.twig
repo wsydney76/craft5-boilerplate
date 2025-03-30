@@ -1,0 +1,10 @@
+{# The heading block type #}
+
+{# @param entry Entry aka block #}
+
+{# There should always be a value, but code defensivly #}
+{% set headingLevel = entry.headingLevel.value ?? 'h2' %}
+
+{{ tag(headingLevel, {
+    text: entry.title
+}) }}

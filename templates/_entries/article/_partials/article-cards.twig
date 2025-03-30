@@ -1,0 +1,56 @@
+{# @param query EntryQuery The query defining conditions/sort order #}
+{# @param perPage int Number of entries displayed per page #}
+
+{# Set default #}
+{% set perPage = perPage ?? 12 %}
+
+{# Get results for current page #}
+{% paginate query.limit(perPage) as pageInfo, entries %}
+
+{% if entries %}
+    <div class="my-8">
+        {# Use embed so that card layouts are consistent #}
+        {% embed '_layouts/partials/cards-wrapper.twig' %}
+            {% block cards %}
+                {% for entry in entries %}
+
+                    {# Wrap in additional div so that cards keep their individual height  #}
+                    <div>
+                        {# The card embed #}
+                        {# entry: the {with} list must include variables used in the embed itself,
+                         but also those used in inner content #}
+                        {% embed '_layouts/partials/card.twig' with {
+                            title: entry.title,
+                            url: entry.url,
+                            image: entry.featuredImage.eagerly().one ?? siteSettings.defaultFeaturedImage.one,
+                            entry 
+                        } only %}
+
+                            {# Section specific content #}
+                            {% block content %}
+                               {% if entry.teaser %}
+                                   <div class="mt-2">
+                                       {{ entry.teaser }}
+                                   </div>
+                               {% endif %}
+                                <div class="mt-2">
+                                    {# The date will be output in the site's locale specific format #}
+                                    {{ entry.postDate|date('short') }}
+                                </div>
+                            {% endblock %}
+                        {% endembed %}
+                    </div>
+
+                {% endfor %}
+            {% endblock %}
+        {% endembed %}
+    </div>
+
+
+    {# Page navigation #}
+    {% include '_layouts/partials/pagination.twig' with {
+        pageInfo
+    } only %}
+
+
+{% endif %}

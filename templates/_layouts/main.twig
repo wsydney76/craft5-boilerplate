@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="{{ currentSite.language }}" style="overflow-y: scroll"> {# Always show vertical scrollbar, avoid anoying shifts #}
+
+{# The head html #}
+{% include '_layouts/partials/head.twig' with {
+    entry
+} only %}
+
+{# Don't use pure black/white #}
+<body class="bg-slate-50 text-slate-900">
+
+{# For keyboard navigation: Jump to content, skip navigation stuff #}
+<a class="sr-only text-xl focus:not-sr-only" href="#content">{{ 'Skip to content'|t }}</a>
+
+{# The header section #}
+{% block header %}
+    {% include '_layouts/partials/header.twig' with {
+        entry
+    } only %}
+    {# The endblock can optionally repeat the block name,
+    for better orientation in templates with a lot nested blocks #}
+{% endblock header %}
+
+{# Let extending templates request the content width by setting a layoutMaxWidth variable #}
+{% block main %}
+    {% set maxWidthClass = {
+        md: 'max-w-(--breakpoint-md)',
+        lg: 'max-w-(--breakpoint-lg)'
+    } %}
+
+    <main class="{{ maxWidthClass[layoutMaxWidth ?? 'md'] }} mx-auto px-4">
+
+        {# Use nested blocks so that extending templates
+        have a choice whether they want to inherit formatting or not #}
+        {% block title %}
+            <h1 id="content" class="mb-8 text-4xl font-bold">
+                {% block titleText %}
+                    {{ entry.title }}
+                {% endblock titleText %}
+            </h1>
+        {% endblock title %}
+
+        {% block teaser %}
+            {# entry.teaser will be null if the current entry's field layout
+            does not include the teaser custom field #}
+            {% if entry.teaser %}
+                <div class="mb-8 text-lg font-semibold">
+                    {{ entry.teaser }}
+                </div>
+            {% endif %}
+        {% endblock teaser %}
+
+        {# Use nested blocks so that extending templates
+        have a choice whether they want to use prose (rich-text) formatting or not #}
+        {% block content %}
+            <article class="prose max-w-none">
+                {% block proseContent %}
+                    {# If the current entry's field layout contains the bodyContent matrix field,
+                    render its blocks using templates in _partions/entry/<blockType>.twig #}
+                    {% if entry.bodyContent %}
+                        {{ entry.bodyContent.render }}
+                    {% endif %}
+                {% endblock proseContent %}
+            </article>
+        {% endblock content %}
+
+    </main>
+{% endblock main %}
+
+{# Let extending templates insert additional content #}
+{% block afterContent %}{% endblock afterContent %}
+
+{# The footer section #}
+{% block footer %}
+    {% include '_layouts/partials/footer.twig' with {
+        entry
+    } only %}
+{% endblock footer %}
+
+</body>
+</html>

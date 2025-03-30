@@ -1,0 +1,51 @@
+color: null
+fieldLayouts:
+  8f94b4df-9468-4586-bda8-9c68855b5098:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-27T09:02:45+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 89bfcc4b-8399-4f7d-801e-18845f58874b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 3713a956-7e57-45cb-9a3b-14cc899fba05
+        userCondition: null
+handle: titleOnly
+hasTitleField: true
+icon: code-simple
+name: 'Title Only'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

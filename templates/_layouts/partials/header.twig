@@ -1,0 +1,18 @@
+{# The header body section #}
+{# @param entry Entry #}
+
+<header class="mb-8 max-w-screen-lg mx-auto pt-8">
+
+    {# The nav bar #}
+    {% include '_layouts/partials/nav.twig' with {
+        entry
+    } only %}
+
+    {# Render featured image, if present in the entry's field layout #}
+    {% if entry.featuredImage %}
+        {% include '_partials/featured-image.twig' with {
+            image: entry.featuredImage.one
+        } only %}
+    {% endif %}
+
+</header>

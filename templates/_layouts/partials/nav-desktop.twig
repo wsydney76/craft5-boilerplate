@@ -1,0 +1,18 @@
+{# @param navEntries [Entry] #}
+{# @param localizedEntries [Entry] #}
+
+{# show for screens > md breakpoint #}
+<ul class="hidden md:flex md:flex-wrap md:space-x-4">
+    {% for navEntry in navEntries %}
+        <li>
+            {{ navEntry.link }}
+        </li>
+    {% endfor %}
+
+    {# Show site name for localized entry versions #}
+    {% for localizedEntry in localizedEntries%}
+        <li>
+            <a href="{{ localizedEntry.url }}">{{ localizedEntry.site.name }}</a>
+        </li>
+    {% endfor %}
+</ul>

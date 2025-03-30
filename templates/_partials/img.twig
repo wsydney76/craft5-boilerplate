@@ -1,0 +1,36 @@
+{# Render an image #}
+
+{# This is a simplified example, possible options are endless.. #}
+{# We are ignoring sizes, multiple formats, <picture>, <source> tags etc. for now #}
+{# Image plugins like Imager X may add additional options and use a different way to render images. #}
+{# That said, never render an image in your templates, always use an include (or macro). #}
+
+{# @param image Asset #}
+{# @param transform Array #}
+{# @param srcset Array Array of scrsets in a format that Craft's image.img understands #}
+{# @param attr Array Attributes to be applied to the <img> tag #}
+
+{# We define transforms in our templates, see
+https://craftcms.com/docs/5.x/development/image-transforms.html#defining-transforms-in-your-templates
+#}
+
+
+{% set transform = transform is defined ? transform : {width: 1024} %}
+
+{# Don't use a srcset by default #}
+{% set srcset = srcset is defined ? srcset : null %}
+
+{# Lazy load image by default #}
+{% set attr = attr is defined ? attr : {loading: 'lazy'} %}
+
+{# Use webp format by default #}
+{% if transform.format is not defined %}
+    {% set transform = transform|merge({format: 'webp'}) %}
+{% endif %}
+
+{# Render the image #}
+{% if attr %}
+    {{ image.img(transform, srcset)|attr(attr) }}
+{% else %}
+    {{ image.img(transform, srcset) }}
+{% endif %}

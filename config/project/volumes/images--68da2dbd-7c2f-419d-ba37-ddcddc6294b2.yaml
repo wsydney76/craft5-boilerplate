@@ -1,0 +1,79 @@
+altTranslationKeyFormat: null
+altTranslationMethod: language
+fieldLayouts:
+  f454fc49-d266-4120-8b9f-37fab45417f9:
+    cardView:
+      - 'layoutElement:b8920e32-b702-4cd5-98d9-dddc5f73b319'
+      - imageSize
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-26T15:02:28+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 385fd96a-acde-4a98-b47f-0e077cbb61c8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            attribute: alt
+            class: null
+            cols: null
+            dateAdded: '2025-03-26T15:06:07+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: true
+            instructions: null
+            label: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: true
+            required: true
+            rows: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AltField
+            uid: b8920e32-b702-4cd5-98d9-dddc5f73b319
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 66c440bd-d7c0-4c81-9cd4-e99b9b404dfb
+        userCondition: null
+fs: $FILES_FS
+handle: images
+name: Images
+sortOrder: 1
+subpath: images
+titleTranslationKeyFormat: null
+titleTranslationMethod: language
+transformFs: $TRANSFORM_FS
+transformSubpath: images

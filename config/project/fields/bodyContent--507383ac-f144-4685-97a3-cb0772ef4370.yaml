@@ -1,0 +1,35 @@
+columnSuffix: null
+handle: bodyContent
+instructions: null
+name: 'Body Content'
+searchable: true
+settings:
+  createButtonLabel: 'New block'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 3fcf711a-9f18-4f07-995b-27db33aeb3ed # Heading
+    -
+      __assoc__:
+        -
+          - uid
+          - 6077873c-3a8d-436c-9096-4cd5eb01ffd9 # Text
+    -
+      __assoc__:
+        -
+          - uid
+          - d3e6c245-4b55-490b-866c-2791cec4870a # Image
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

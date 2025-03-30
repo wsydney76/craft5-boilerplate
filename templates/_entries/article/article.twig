@@ -1,0 +1,24 @@
+{# @param entry Entry injected by Craft routing #}
+
+{# Using the convention _entries/<sectiongroup>/<sectionhandle> #}
+{# where sectiongroup bundles all sections that logically belong together #}
+
+{# The main layout template will handle common content in a consistent way #}
+{% extends "_layouts/main.twig" %}
+
+{% block proseContent %}
+    {# Section specific content #}
+    {% include '_entries/article/partials/meta.twig' with {
+    	entry
+    } only %}
+
+    {# The default block content from the extended template #}
+    {{ parent() }}
+{% endblock %}
+
+{# Previous/Next article with default condition (by postDate desc) #}
+{% block afterContent %}
+    {% include '_layouts/partials/prevnext.twig' with {
+        entry
+    } only %}
+{% endblock %}

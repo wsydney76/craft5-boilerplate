@@ -1,0 +1,125 @@
+dateModified: 1743329863
+elementSources:
+  craft\elements\Asset:
+    -
+      defaultSort:
+        - dateCreated
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: 'volume:68da2dbd-7c2f-419d-ba37-ddcddc6294b2' # Images
+      tableAttributes:
+        - alt
+        - imageSize
+        - size
+        - dateModified
+        - link
+      type: native
+    -
+      key: temp
+      type: native
+  craft\elements\Entry:
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - status
+        - section
+        - postDate
+        - link
+      type: native
+    -
+      defaultSort:
+        - title
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: singles
+      tableAttributes:
+        - section
+        - status
+        - link
+      type: native
+    -
+      heading: Channels
+      type: heading
+    -
+      defaultSort:
+        - postDate
+        - desc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:adcd62ed-7061-46bd-99b4-d61f6c3de162' # Article
+      tableAttributes:
+        - 'field:c6add583-fe6f-45b1-8bd6-f8c643492713' # Teaser
+        - status
+        - drafts
+        - postDate
+        - link
+      type: native
+email:
+  fromEmail: admin@example.com
+  fromName: 'Craft CMS'
+  replyToEmail: null
+  template: null
+  transportSettings:
+    command: '/usr/local/bin/mailpit sendmail -t --smtp-addr 127.0.0.1:1025'
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  localFilesFs:
+    hasUrls: true
+    name: 'Local Files FS'
+    settings:
+      path: $FILES_FS_ROOT
+    type: craft\fs\Local
+    url: $FILES_FS_URL
+  localTransformFs:
+    hasUrls: true
+    name: 'Local Transform FS'
+    settings:
+      path: $TRANSFORM_FS_ROOT
+    type: craft\fs\Local
+    url: $TRANSFORM_FS_URL
+meta:
+  __names__:
+    1c313aeb-8726-40d7-8740-dab29921fc5f: Listing # Listing
+    3fcf711a-9f18-4f07-995b-27db33aeb3ed: Heading # Heading
+    5fbcee21-14a3-45c8-8fbe-7cacd4c0d6fd: 'Article Listing' # Article Listing
+    8b9185b8-d2ef-4b7a-8afb-3cdc18a63505: Page # Page
+    9d5eff39-3ac9-4fc4-ae8e-52aada2f24ee: 'Heading Level' # Heading Level
+    26ca2c3c-73b6-46bf-80b9-91da0f41219e: 'Site Info' # Site Info
+    32c4e10c-996f-48a4-a829-a8f288df551f: 'Featured Image' # Featured Image
+    036f6fb3-bd0b-4d7d-a2a6-7beb59204c1a: Default # Default
+    42fd461d-399b-49e7-82b0-cbd90b09ea5c: 'Site Settings' # Site Settings
+    68da2dbd-7c2f-419d-ba37-ddcddc6294b2: Images # Images
+    73ba057e-982c-4227-b5e1-a8b512bb0b1d: Entries # Entries
+    569d97bb-e954-4391-8885-c8350b27d0b8: 'Title Only' # Title Only
+    982b0231-4baf-4422-b094-3d551c814f69: Deutsch # Deutsch
+    4463ad37-509f-457e-bae6-6289e2e8137a: Text # Text
+    5047aa28-914a-45d9-b3aa-27b48e5d7abc: Home # Home
+    507383ac-f144-4685-97a3-cb0772ef4370: 'Body Content' # Body Content
+    6077873c-3a8d-436c-9096-4cd5eb01ffd9: Text # Text
+    a4f2973e-4934-46f7-af6d-b72af78abade: English # English
+    a4405e55-8856-409d-89d2-f50917b45d0c: 'Content Image' # Content Image
+    a43152f2-a4cc-4557-870d-9b51dac64371: Search # Search
+    adcd62ed-7061-46bd-99b4-d61f6c3de162: Article # Article
+    c6add583-fe6f-45b1-8bd6-f8c643492713: Teaser # Teaser
+    d3e6c245-4b55-490b-866c-2791cec4870a: Image # Image
+    f9ab1fa9-b717-4a2f-9d7e-28c0c50d32f8: 'Single Line Text' # Single Line Text
+    fc2bf718-1690-4182-88ae-da41b61cceb6: Home # Home
+plugins:
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: solo
+  live: true
+  name: 'Craft CMS'
+  retryDuration: null
+  schemaVersion: 5.6.0.2
+  timeZone: $SYSTEM_TIMEZONE

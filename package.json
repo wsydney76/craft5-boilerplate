@@ -1,0 +1,22 @@
+{
+  "name": "craft_boilerplate",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Minimum preconfigured Craft Starter",
+  "author": "wsydney76",
+  "private": true,
+  "license": "Unlicense",
+  "scripts": {
+    "dev": "NODE_ENV=dev vite",
+    "build": "NODE_ENV=production vite build --mode production"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.0.16"
+  },
+  "dependencies": {
+    "@alpinejs/focus": "^3.14.9",
+    "alpinejs": "^3.14.9"
+  }
+}

@@ -1,0 +1,53 @@
+{# The nav bar #}
+{# @param entry Entry #}
+
+{# Use Alpine component for handling the mobile menu #}
+<nav class="flex items-center justify-between pb-6 px-4"
+     x-data="{
+        // the reactive property that controls the opened/closed state of the nav panel
+        open: false,
+
+        // Return opened/closed state
+        isMobileNavOpen() {
+            return this.open;
+        },
+
+        // Set state to opened, set focus to close button
+        openMobileNav() {
+            this.open = true;
+            // Wait until DOM state is updated
+            this.$nextTick(() => { this.$refs.closeBtn.focus() });
+        },
+
+        // Set state to opened, set focus to hamburger menu button
+        closeMobileNav() {
+            this.open = false;
+            this.$refs.openBtn.focus()
+            this.$nextTick(() => { this.$refs.openBtn.focus() });
+        }
+     }">
+
+    {# The site name #}
+    <a class=" text-2xl font-bold" href="{{ siteUrl('/') }}">{{ siteSettings.siteName }}</a>
+
+    {# Get entries for primary navigation. Top level only for now #}
+    {% set navEntries = siteSettings.primaryNavigation.all %}
+
+    {# Get localized versions of the current entry #}
+    {% set localizedEntries = craft.app.isMultiSite ? entry.localized.all : [] %}
+
+    {# show nav if there is something to show... #}
+    {% if navEntries or localizedEntries %}
+
+        {# wide screens #}
+        {% include '_layouts/partials/nav-desktop.twig' with {
+            navEntries, localizedEntries
+        } only %}
+
+        {# narrow screens #}
+        {% include '_layouts/partials/nav-mobile.twig' with {
+            navEntries, localizedEntries
+        } only %}
+
+    {% endif %}
+</nav>

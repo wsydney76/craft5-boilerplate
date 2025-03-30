@@ -1,0 +1,21 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 26ca2c3c-73b6-46bf-80b9-91da0f41219e # Site Info
+handle: siteSettings
+maxAuthors: 1
+name: 'Site Settings'
+propagationMethod: all
+siteSettings:
+  982b0231-4baf-4422-b094-3d551c814f69: # Deutsch
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+  a4f2973e-4934-46f7-af6d-b72af78abade: # English
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+type: single

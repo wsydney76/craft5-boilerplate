@@ -1,0 +1,73 @@
+{# The mobile menu #}
+
+{# @param navEntries [Entry] #}
+{# @param localizedEntries [Entry] #}
+
+{# The Alpine component in nav.twig controls visibility and behavior #}
+
+{# Hamburger menu button #}
+{# Show if screen width < md breakpoint #}
+
+{# Open nav panel on click #}
+{# x-ref: let the component access the button without using an explicit id #}
+<button class="cursor-pointer md:hidden"
+        aria-label="{{ 'Open'|t }}"
+        @click="openMobileNav"
+        x-ref="openBtn"
+>
+    {{ svg('@templates/_icons/menu.svg') }}
+</button>
+
+
+{# The menu panel #}
+{# Show if open... #}
+{# x-cloak: Avoid flickering on page load #}
+{# x-transition: Animation on open/close #}
+{# x-trap.inert: Keep the focus inside the nav panel when pressing tab #}
+{# .noscroll: Dont' scroll the page when pressing up/down #}
+{# @key...: Move focus inside nav panel when pressing up/down #}
+
+<div class="absolute top-0 left-0 right-0 z-50 "
+     x-show="isMobileNavOpen" x-cloak
+     x-transition
+     x-trap.inert.noscroll="open"
+     @keydown.down="$focus.next()"
+     @keydown.up="$focus.previous()"
+     >
+
+    {# Close nav panel #}
+    {# x-ref: let the component access the button without using an explicit id #}
+    <button class="absolute top-2 right-2 cursor-pointer" aria-label="{{ 'Close'|t }}"
+            @click="closeMobileNav()"
+            x-ref="closeBtn"
+    >
+        {{ svg('@templates/_icons/close.svg') }}
+    </button>
+
+    {# The nav panel content #}
+    {# Close panel when clicked outside #}
+    {# Close panel when pressing esc #}
+    <ul class="w-full py-6 bg-slate-600 text-white flex flex-col flex-nowrap items-center space-y-4 transition "
+        @click.outside.prevent.stop="closeMobileNav()"
+        @keyup.esc.window="closeMobileNav()"
+    >
+
+        <li class="pb-4 text-xl font-semibold">
+            {{ siteSettings.siteName }}
+        </li>
+
+        {% for navEntry in navEntries %}
+            <li>
+                {{ navEntry.link }}
+            </li>
+        {% endfor %}
+
+        {% for localizedEntry in localizedEntries %}
+            <li>
+                <a href="{{ localizedEntry.url }}">{{ localizedEntry.site.name }}</a>
+            </li>
+        {% endfor %}
+
+    </ul>
+</div>
+

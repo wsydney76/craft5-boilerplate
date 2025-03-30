@@ -1,0 +1,70 @@
+columnSuffix: null
+handle: featuredImage
+instructions: null
+name: 'Featured Image'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds:
+    - image
+  branchLimit: null
+  defaultUploadLocationSource: 'volume:68da2dbd-7c2f-419d-ba37-ddcddc6294b2' # Images
+  defaultUploadLocationSubpath: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  previewMode: thumbs
+  restrictFiles: true
+  restrictLocation: false
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:68da2dbd-7c2f-419d-ba37-ddcddc6294b2' # Images
+  restrictedLocationSubpath: null
+  selectionCondition:
+    __assoc__:
+      -
+        - elementType
+        - craft\elements\Asset
+      -
+        - fieldContext
+        - global
+      -
+        - class
+        - craft\elements\conditions\assets\AssetCondition
+      -
+        - conditionRules
+        -
+          -
+            __assoc__:
+              -
+                - class
+                - craft\elements\conditions\assets\WidthConditionRule
+              -
+                - uid
+                - 40041a18-b7ab-4294-a8d3-0a286da20ec3
+              -
+                - operator
+                - '>='
+              -
+                - value
+                - '1000'
+              -
+                - maxValue
+                - ''
+              -
+                - step
+                - 1
+  selectionLabel: 'Select an image'
+  showCardsInGrid: true
+  showSiteMenu: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources:
+    - 'volume:68da2dbd-7c2f-419d-ba37-ddcddc6294b2' # Images
+  targetSiteId: null
+  validateRelatedElements: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

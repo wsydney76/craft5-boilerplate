@@ -1,0 +1,7 @@
+{# The text block type #}
+
+{# @param entry Entry aka block #}
+
+{# Apply markdown filter #}
+{# Apply purify filter, that filters out potentially harmfull stuff, like <script> tags #}
+{{ entry.text|md|purify }}

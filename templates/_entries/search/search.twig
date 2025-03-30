@@ -1,0 +1,57 @@
+{# @param entry Entry injected by Craft routing #}
+
+{% extends "_layouts/main.twig" %}
+
+{% set layoutMaxWidth = 'lg' %}
+
+{# Get param from url, will be null if not present #}
+{% set searchQuery = craft.app.request.getParam('q') %}
+
+{% block content %}
+    {# The search form #}
+    <form class="border border-brand-300 shadow-md bg-white p-4 md:flex md:space-x-4 items-center">
+
+        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 whitespace-nowrap" for="search-query">
+            {{ 'Search for:'|t }}
+        </label>
+
+        <input type="search"
+               id="search-query"
+               autofocus
+               class="w-full"
+               name="q"
+               value="{{ searchQuery }}">
+
+        {% include '_partials/submitButton.twig' with {
+            caption: 'Start'|t,
+        } only %}
+    </form>
+
+    {% if searchQuery %}
+
+        {# Execute the search #}
+
+        {# The search query #}
+        {% set query = craft.entries()
+            .section('article')
+            .search(searchQuery)
+            .orderBy('score') %}
+
+        {# This is actually a duplicate query, as we need the count beforehand. #}
+        {% set count = query.count %}
+
+        {% if count %}
+            <h2 class="mt-8 text-xl">{{ count }} {{ '{count,plural,=1{search result} other{search results}}'|t({count: count}) }}</h2>
+
+            {# Reuse the cards layout from article index #}
+            {% include '_entries/article/_partials/article-cards.twig' with {
+                query,
+                perPage: 12
+            } only %}
+        {% else %}
+            <div class="mt-4">
+                {{ 'Your search for "{q}" didn’t return any results.'|t({q: searchQuery, count: count}) }}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

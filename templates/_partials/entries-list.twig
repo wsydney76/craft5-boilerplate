@@ -1,0 +1,25 @@
+{# @param heading string optional heading #}
+{# @param query EntryQuery The query that determine the entries to show #}
+
+{% set heading = heading ?? '' %}
+
+{# Executing the query here, leaving the option open to add additional parameters here #}
+{% set entries = query.collect %}
+
+{% if entries.count %}
+    <div class="my-8">
+        {% if heading %}
+            <h2>{{ heading }}</h2>
+        {% endif %}
+
+        <ul class="mt-4">
+            {% for entry in entries %}
+                <li>
+                    {# short for <a href="{{ entry.url }}">{{ entry.title }}</a> #}
+                    {{ entry.link }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endif %}

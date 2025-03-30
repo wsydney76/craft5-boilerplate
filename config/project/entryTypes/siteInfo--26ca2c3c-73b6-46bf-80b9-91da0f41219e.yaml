@@ -1,0 +1,88 @@
+color: null
+fieldLayouts:
+  3c3ec154-8d7a-447d-bea2-da0dcb32718f:
+    cardView:
+      - 'layoutElement:2e501cb0-8335-4ee8-a1ae-04a8aa64d12c'
+      - 'layoutElement:d6705047-ff7b-4840-80a4-d0c6cc5fdee2'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-26T18:56:16+00:00'
+            elementCondition: null
+            fieldUid: f9ab1fa9-b717-4a2f-9d7e-28c0c50d32f8 # Single Line Text
+            handle: siteName
+            includeInCards: true
+            instructions: null
+            label: 'Site Name'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2e501cb0-8335-4ee8-a1ae-04a8aa64d12c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-26T18:56:16+00:00'
+            elementCondition: null
+            fieldUid: 73ba057e-982c-4227-b5e1-a8b512bb0b1d # Entries
+            handle: primaryNavigation
+            includeInCards: false
+            instructions: null
+            label: 'Primary Navigation'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 27e9a9ee-bbe5-427a-a837-734b0497b331
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-26T18:56:16+00:00'
+            elementCondition: null
+            fieldUid: 32c4e10c-996f-48a4-a829-a8f288df551f # Featured Image
+            handle: defaultFeaturedImage
+            includeInCards: false
+            instructions: 'This will be used as a fallback if an entry does not specify an own featured image'
+            label: 'Default Featured Image'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bd99a4cf-0d76-4e13-a73b-698eb1ffb387
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-26T18:56:16+00:00'
+            elementCondition: null
+            fieldUid: f9ab1fa9-b717-4a2f-9d7e-28c0c50d32f8 # Single Line Text
+            handle: copyright
+            includeInCards: true
+            instructions: null
+            label: Copyright
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d6705047-ff7b-4840-80a4-d0c6cc5fdee2
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 827891e2-deb5-4f9d-a3b5-f78edb196e41
+        userCondition: null
+handle: siteInfo
+hasTitleField: false
+icon: gear
+name: 'Site Info'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: '{siteName}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: language

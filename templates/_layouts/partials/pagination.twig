@@ -1,0 +1,18 @@
+{# Simple page navigation #}
+
+{# @param pageInfo Pagination #}
+
+{# Only show if there are more pages #}
+{% if pageInfo.totalPages > 1 %}
+    <div class="mt-12 flex justify-between not-prose prose-base">
+        <div>
+            {% if pageInfo.prevUrl %}
+                &lt; <a href="{{ pageInfo.prevUrl }}">{{ 'Previous Page'|t }}</a>{% endif %}
+        </div>
+        <div>
+            {% if pageInfo.nextUrl %}
+                <a href="{{ pageInfo.nextUrl }}">{{ 'Next Page'|t }} &gt;</a>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

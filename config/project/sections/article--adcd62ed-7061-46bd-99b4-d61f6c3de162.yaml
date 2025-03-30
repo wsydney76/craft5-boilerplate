@@ -1,0 +1,33 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 8b9185b8-d2ef-4b7a-8afb-3cdc18a63505 # Page
+handle: article
+maxAuthors: 1
+name: Article
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  982b0231-4baf-4422-b094-3d551c814f69: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: _entries/article/article.twig
+    uriFormat: 'artikel/{slug}'
+  a4f2973e-4934-46f7-af6d-b72af78abade: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: _entries/article/article.twig
+    uriFormat: 'articles/{slug}'
+type: channel

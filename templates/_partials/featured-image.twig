@@ -1,0 +1,19 @@
+{# @param image Asset #}
+
+{# If no image, use the default image #}
+{% set image = image ?? siteSettings.defaultFeaturedImage.one %}
+
+{% if image %}
+
+    {# transform: By convention, we define transforms in our templates, not in the CP #}
+    {# srcset: Example for responsive images, we need more knowledge to use it correctly.
+    The '2x' increases image quality significantly, at the cost of bigger images.#}
+    {# loading: eager: Don't lazy load images that are always above the fold. #}
+
+    {% include '_partials/img.twig' with {
+    	image,
+        transform: {width: 1024, height: 400},
+        srcset: [1024, 768, 400, '2x'],
+        attr: {loading: 'eager'}
+    } only %}
+{% endif %}

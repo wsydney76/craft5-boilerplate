@@ -1,0 +1,12 @@
+{# @param entry Entry injected by Craft routing #}
+{% extends "_layouts/main.twig" %}
+
+{# Make the layout template use the wide layout #}
+{% set layoutMaxWidth = 'lg' %}
+
+{% block content %}
+    {% include '_entries/article/_partials/article-cards.twig' with {
+    	query: craft.entries.section('article'),
+        perPage: 12
+    } only %}
+{% endblock %}

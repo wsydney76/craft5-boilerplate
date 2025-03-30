@@ -1,0 +1,25 @@
+{# Simple previous/next entry navigation #}
+
+{# @param entry Entry #}
+{# @param condition Array The condition that determines the next/prev entry #}
+{# Default: current section with its default sort order #}
+
+{% set condition = condition ?? {section: entry.section.handle} %}
+
+{% set prev = entry.prev(condition) %}
+{% set next = entry.next(condition) %}
+
+{% if prev or next %}
+    <div class="mt-12 max-w-screen-lg mx-auto px-4 flex justify-between">
+        <div>
+            {% if prev %}
+                &lt; {{ prev.link }}
+            {% endif %}
+        </div>
+        <div>
+            {% if next %}
+                {{ next.link }} &gt;
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
