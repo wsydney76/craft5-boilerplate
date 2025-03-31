@@ -26,6 +26,7 @@ class DefaultController extends Controller
     public $defaultAction = 'index';
     public const SECTION_HANDLE = 'article';
     public const TYPE_HANDLE = 'page';
+    public const VOLUME = 'images';
     public const NUM_ENTRIES = 20;
 
 
@@ -116,7 +117,7 @@ class DefaultController extends Controller
 
     public function actionCreateArticles(int $num = self::NUM_ENTRIES): int
     {
-        if (!$this->hasImages()) {
+        if (!$this->hasImages($num)) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
@@ -252,11 +253,18 @@ class DefaultController extends Controller
         return Asset::find()->kind('image')->width('> 1000')->orderBy('rand()')->one()->id;
     }
 
-    private function hasImages()
+    private function hasImages(int $num = self::NUM_ENTRIES)
     {
-        $imageCount = Asset::find()->kind('image')->width('> 1000')->count();
-        if (!$imageCount) {
-            $this->stdout("No images found." . PHP_EOL);
+        $hasSeedImagesIndexed = Asset::find()->folderPath('seed/')->exists();
+        if (!$hasSeedImagesIndexed) {
+            $this->stdout("Indexing seed images..." . PHP_EOL);
+            Craft::$app->runAction('index-assets/one', [self::VOLUME]);
+        }
+
+        $query = Asset::find()->kind('image')->width('> 1000');
+
+        if ($query->count()< $num) {
+            $this->stdout("Could not find $num images." . PHP_EOL);
             return false;
         }
 
