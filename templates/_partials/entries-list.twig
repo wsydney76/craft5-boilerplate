@@ -3,7 +3,8 @@
 
 {% set heading = heading ?? '' %}
 
-{# Executing the query here, leaving the option open to add additional parameters here #}
+{# Executing the query here, leaving the option open to add additional parameters here
+e.g. eager loading, caching#}
 {% set entries = query.collect %}
 
 {% if entries.count %}

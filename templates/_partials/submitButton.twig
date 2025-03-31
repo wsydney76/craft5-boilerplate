@@ -1,5 +1,10 @@
 {# Display a button #}
 
+{# @param caption string The button text #}
+
+{# Set a default if no caption is provided #}
+{% set caption = caption ?? 'Submit'|t %}
+
 {#
 You may think of using Tailwind's @apply statement here, as buttons typically have a ton of classes
 We would recommend to avoid it and build properly designed components.

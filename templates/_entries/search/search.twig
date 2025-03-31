@@ -2,6 +2,7 @@
 
 {% extends "_layouts/main.twig" %}
 
+{# Request wide layout #}
 {% set layoutMaxWidth = 'lg' %}
 
 {# Get param from url, will be null if not present #}
@@ -9,12 +10,15 @@
 
 {% block content %}
     {# The search form #}
-    <form class="border border-brand-300 shadow-md bg-white p-4 md:flex md:space-x-4 items-center">
+    {# mobile (< md): stack vertically, with a bit of y margins #}
+    {# desktop (> md): show horizontally, with a bit of x margins #}
+    <form class="border border-brand-300 shadow-md bg-white p-4 space-y-4 md:space-y-0 md:flex md:space-x-4 md:items-center">
 
         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 whitespace-nowrap" for="search-query">
             {{ 'Search for:'|t }}
         </label>
 
+        {# Input is styled by Tailwind forms plugin #}
         <input type="search"
                id="search-query"
                autofocus
@@ -29,8 +33,6 @@
 
     {% if searchQuery %}
 
-        {# Execute the search #}
-
         {# The search query #}
         {% set query = craft.entries()
             .section('article')
@@ -41,10 +43,11 @@
         {% set count = query.count %}
 
         {% if count %}
+            {# Use a singular/plural aware translation rule #}
             <h2 class="mt-8 text-xl">{{ count }} {{ '{count,plural,=1{search result} other{search results}}'|t({count: count}) }}</h2>
 
-            {# Reuse the cards layout from article index #}
-            {% include '_entries/article/_partials/article-cards.twig' with {
+            {# Reuse the cards layout from article listing #}
+            {% include '_entries/article/partials/article-cards.twig' with {
                 query,
                 perPage: 12
             } only %}

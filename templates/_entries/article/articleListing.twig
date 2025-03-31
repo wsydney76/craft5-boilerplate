@@ -5,7 +5,7 @@
 {% set layoutMaxWidth = 'lg' %}
 
 {% block content %}
-    {% include '_entries/article/_partials/article-cards.twig' with {
+    {% include '_entries/article/partials/article-cards.twig' with {
     	query: craft.entries.section('article'),
         perPage: 12
     } only %}

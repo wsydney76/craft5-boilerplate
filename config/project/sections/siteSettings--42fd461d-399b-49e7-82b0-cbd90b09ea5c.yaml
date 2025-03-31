@@ -2,10 +2,10 @@ defaultPlacement: end
 enableVersioning: true
 entryTypes:
   -
-    uid: 26ca2c3c-73b6-46bf-80b9-91da0f41219e # Site Info
+    uid: 26ca2c3c-73b6-46bf-80b9-91da0f41219e # Site settings
 handle: siteSettings
 maxAuthors: 1
-name: 'Site Settings'
+name: 'Site settings'
 propagationMethod: all
 siteSettings:
   982b0231-4baf-4422-b094-3d551c814f69: # Deutsch

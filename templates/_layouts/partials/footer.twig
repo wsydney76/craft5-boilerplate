@@ -1,11 +1,15 @@
 {# The footer section #}
 {# @param entry Entry #}
 
-<footer class="mt-8 border-t border-gray-500 max-w-screen-lg mx-auto py-6 px-4 flex justify-between">
+<footer class="mt-8 border-t border-gray-500 max-w-(--breakpoint-lg) mx-auto py-6 px-4 flex justify-between">
     <div>
         &copy; {{ now|date('Y') }} {{ siteSettings.copyright }}
     </div>
     <div>
-        <a href="{{ entry.cpEditUrl }}" target="_blank">{{ 'Edit'|t }}</a>
+        {# Add an edit link if a user is logged in and has permissions to edit the entry
+        This won't work if the page is cached #}
+        {% if currentUser and entry.canSave(currentUser) %}
+            <a href="{{ entry.cpEditUrl }}" target="_blank">{{ 'Edit'|t }}</a>
+        {% endif %}
     </div>
 </footer>

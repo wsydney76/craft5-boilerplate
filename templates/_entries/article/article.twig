@@ -16,7 +16,7 @@
     {{ parent() }}
 {% endblock %}
 
-{# Previous/Next article with default condition (by postDate desc) #}
+{# Previous/Next article with default condition (section by postDate desc) #}
 {% block afterContent %}
     {% include '_layouts/partials/prevnext.twig' with {
         entry

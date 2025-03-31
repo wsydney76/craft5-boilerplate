@@ -48,7 +48,7 @@ fieldLayouts:
             includeInCards: false
             instructions: 'This will be used as a fallback if an entry does not specify an own featured image'
             label: 'Default Featured Image'
-            providesThumbs: false
+            providesThumbs: true
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -75,10 +75,10 @@ fieldLayouts:
         name: Inhalt
         uid: 827891e2-deb5-4f9d-a3b5-f78edb196e41
         userCondition: null
-handle: siteInfo
+handle: siteSettings
 hasTitleField: false
 icon: gear
-name: 'Site Info'
+name: 'Site settings'
 showSlugField: false
 showStatusField: false
 slugTranslationKeyFormat: null

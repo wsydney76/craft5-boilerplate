@@ -3,6 +3,7 @@ fieldLayouts:
   1c964c88-15f1-49aa-943c-b0a4ca599abd:
     cardView:
       - 'layoutElement:6f6af85d-639e-4a43-aa9a-845493d7b239'
+      - postDate
     tabs:
       -
         elementCondition: null
@@ -38,6 +39,22 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: '2025-03-26T16:02:02+00:00'
+            elementCondition: null
+            fieldUid: 32c4e10c-996f-48a4-a829-a8f288df551f # Featured Image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: true
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e81193e2-5001-4869-b0c1-89afc9bca0bc
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2025-03-26T16:39:50+00:00'
             elementCondition: null
             fieldUid: c6add583-fe6f-45b1-8bd6-f8c643492713 # Teaser
@@ -50,22 +67,6 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 6f6af85d-639e-4a43-aa9a-845493d7b239
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2025-03-26T16:02:02+00:00'
-            elementCondition: null
-            fieldUid: 32c4e10c-996f-48a4-a829-a8f288df551f # Featured Image
-            handle: null
-            includeInCards: false
-            instructions: null
-            label: null
-            providesThumbs: true
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: e81193e2-5001-4869-b0c1-89afc9bca0bc
             userCondition: null
             warning: null
             width: 100

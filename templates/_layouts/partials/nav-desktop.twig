@@ -4,13 +4,16 @@
 {# show for screens > md breakpoint #}
 <ul class="hidden md:flex md:flex-wrap md:space-x-4">
     {% for navEntry in navEntries %}
-        <li>
+        {# Underline nav link if it is 'active' #}
+        {# E.g. either the article listing or an article is the current page #}
+        {# This requires that section URI rules are setup accordingly #}
+        <li class="{{ navEntry.uri starts with craft.app.request.segment(1) ? 'underline' }}">
             {{ navEntry.link }}
         </li>
     {% endfor %}
 
     {# Show site name for localized entry versions #}
-    {% for localizedEntry in localizedEntries%}
+    {% for localizedEntry in localizedEntries %}
         <li>
             <a href="{{ localizedEntry.url }}">{{ localizedEntry.site.name }}</a>
         </li>

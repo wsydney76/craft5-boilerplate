@@ -1,6 +1,6 @@
 {# @param image Asset #}
 
-{# If no image, use the default image #}
+{# If no image, use the default image. May be the case for drafts. #}
 {% set image = image ?? siteSettings.defaultFeaturedImage.one %}
 
 {% if image %}

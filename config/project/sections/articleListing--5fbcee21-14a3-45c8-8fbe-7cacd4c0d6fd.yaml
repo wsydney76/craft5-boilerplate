@@ -5,7 +5,7 @@ entryTypes:
     uid: 1c313aeb-8726-40d7-8740-dab29921fc5f # Listing
 handle: articleListing
 maxAuthors: 1
-name: 'Article Listing'
+name: 'Article listing'
 previewTargets:
   -
     __assoc__:

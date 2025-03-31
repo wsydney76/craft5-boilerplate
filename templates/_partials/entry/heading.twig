@@ -2,9 +2,11 @@
 
 {# @param entry Entry aka block #}
 
-{# There should always be a value, but code defensivly #}
+{# There should always be a value, but code defensively #}
+{# Styling is applied by Tailwind typography plugin #}
 {% set headingLevel = entry.headingLevel.value ?? 'h2' %}
 
+{# Render html element with dynamic tag name  #}
 {{ tag(headingLevel, {
     text: entry.title
 }) }}

@@ -14,35 +14,39 @@
             {% block cards %}
                 {% for entry in entries %}
 
-                    {# Wrap in additional div so that cards keep their individual height  #}
-                    <div>
+                    {# Wrap in additional tag so that cards keep their individual height  #}
+                    <article>
                         {# The card embed #}
                         {# entry: the {with} list must include variables used in the embed itself,
-                         but also those used in inner content #}
+                         but also those used in inner content.
+                         Eager load images avoiding n+1 problem. (TODO: eager load image transforms?)
+                         Live articles should always have a featured image (defined as required)
+                         but drafts may not, so we use a fallback image in order to avoid messing up the layout.
+                        #}
                         {% embed '_layouts/partials/card.twig' with {
                             title: entry.title,
                             url: entry.url,
                             image: entry.featuredImage.eagerly().one ?? siteSettings.defaultFeaturedImage.one,
-                            entry 
+                            entry
                         } only %}
 
                             {# Section specific content #}
                             {% block content %}
-                               {% if entry.teaser %}
-                                   <div class="mt-2">
-                                       {{ entry.teaser }}
-                                   </div>
-                               {% endif %}
+                                {% if entry.teaser %}
+                                    <div class="mt-2">
+                                        {{ entry.teaser }}
+                                    </div>
+                                {% endif %}
                                 <div class="mt-2">
                                     {# The date will be output in the site's locale specific format #}
                                     {{ entry.postDate|date('short') }}
                                 </div>
-                            {% endblock %}
+                            {% endblock content %}
                         {% endembed %}
-                    </div>
+                    </article>
 
                 {% endfor %}
-            {% endblock %}
+            {% endblock cards %}
         {% endembed %}
     </div>
 

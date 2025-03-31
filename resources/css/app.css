@@ -1,7 +1,7 @@
+/* We are using Tailwind styles without any customization */
 @import 'tailwindcss';
 
+/* Tailwind plugins */
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
 
-/* Not automatically discovered by the vite plugin */
-@source "../../templates";

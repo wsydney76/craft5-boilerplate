@@ -1,10 +1,11 @@
 <?php
 
 return [
-    'Article Listing' => 'Artikelliste',
+    'Article listing' => 'Artikelliste',
     'Article' => 'Artikel',
     'Body Content' => 'Inhalt',
     'Caption' => 'Beschriftung',
+    'Content' => 'Inhalte',
     'Created by' => 'Erstellt von',
     'Default Featured Image' => 'Standard Beitragsbild',
     'Edit' => 'Bearbeiten',
@@ -18,10 +19,15 @@ return [
     'Newest Articles' => 'Neueste Artikel',
     'Next Page' => 'Nächste Seite',
     'Previous Page' => 'Vorherige Seite',
+    'Primary entry page' => 'Primäre Eintragsseite',
     'Primary Navigation' => 'Primäre Navigation',
+    'Search' => 'Suche',
     'Search for:' => 'Suche nach:',
     'Select an image' => 'Bild auswählen',
+    'Settings' => 'Einstellungen',
+    'Singles' => 'Einzeleinträge',
     'Site name' => 'Sitename',
+    'Site settings' => 'Site-Einstellungen',
     'Site wide settings' => 'Siteweite Einstellungen',
     'Skip to content' => 'Zum Inhalt springen',
     'Start' => 'Start',

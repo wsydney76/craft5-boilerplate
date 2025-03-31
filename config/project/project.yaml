@@ -1,4 +1,4 @@
-dateModified: 1743329863
+dateModified: 1743414660
 elementSources:
   craft\elements\Asset:
     -
@@ -24,7 +24,7 @@ elementSources:
         - postDate
         - desc
       defaultViewMode: ''
-      disabled: false
+      disabled: true
       key: '*'
       tableAttributes:
         - status
@@ -33,11 +33,37 @@ elementSources:
         - link
       type: native
     -
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: in
+            uid: b1bd29c1-836e-498f-b72f-d8bff91410db
+            values:
+              - 42fd461d-399b-49e7-82b0-cbd90b09ea5c # Site settings
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - id
+        - asc
+      defaultViewMode: cards
+      key: 'custom:9b37b3b2-86b7-40a4-a7ff-b536411146e8'
+      label: Settings
+      tableAttributes:
+        - section
+        - 'fieldInstance:27e9a9ee-bbe5-427a-a837-734b0497b331'
+        - 'fieldInstance:d6705047-ff7b-4840-80a4-d0c6cc5fdee2'
+      type: custom
+    -
+      heading: Content
+      type: heading
+    -
       defaultSort:
         - title
         - asc
-      defaultViewMode: ''
-      disabled: false
+      defaultViewMode: cards
+      disabled: true
       key: singles
       tableAttributes:
         - section
@@ -45,18 +71,40 @@ elementSources:
         - link
       type: native
     -
-      heading: Channels
-      type: heading
+      condition:
+        class: craft\elements\conditions\entries\EntryCondition
+        conditionRules:
+          -
+            class: craft\elements\conditions\entries\SectionConditionRule
+            operator: in
+            uid: 42f6b3b6-697b-43be-a58e-524f02e1512f
+            values:
+              - 5fbcee21-14a3-45c8-8fbe-7cacd4c0d6fd # Article listing
+              - fc2bf718-1690-4182-88ae-da41b61cceb6 # Home
+              - a43152f2-a4cc-4557-870d-9b51dac64371 # Search
+        elementType: craft\elements\Entry
+        fieldContext: global
+      defaultSort:
+        - section
+        - asc
+      defaultViewMode: cards
+      key: 'custom:b9c315be-0a90-4c11-9a20-0ae64139d4ab'
+      label: Singles
+      tableAttributes:
+        - status
+        - section
+        - link
+      type: custom
     -
       defaultSort:
         - postDate
         - desc
-      defaultViewMode: ''
+      defaultViewMode: cards
       disabled: false
       key: 'section:adcd62ed-7061-46bd-99b4-d61f6c3de162' # Article
       tableAttributes:
-        - 'field:c6add583-fe6f-45b1-8bd6-f8c643492713' # Teaser
         - status
+        - 'field:c6add583-fe6f-45b1-8bd6-f8c643492713' # Teaser
         - drafts
         - postDate
         - link
@@ -88,13 +136,13 @@ meta:
   __names__:
     1c313aeb-8726-40d7-8740-dab29921fc5f: Listing # Listing
     3fcf711a-9f18-4f07-995b-27db33aeb3ed: Heading # Heading
-    5fbcee21-14a3-45c8-8fbe-7cacd4c0d6fd: 'Article Listing' # Article Listing
+    5fbcee21-14a3-45c8-8fbe-7cacd4c0d6fd: 'Article listing' # Article listing
     8b9185b8-d2ef-4b7a-8afb-3cdc18a63505: Page # Page
     9d5eff39-3ac9-4fc4-ae8e-52aada2f24ee: 'Heading Level' # Heading Level
-    26ca2c3c-73b6-46bf-80b9-91da0f41219e: 'Site Info' # Site Info
+    26ca2c3c-73b6-46bf-80b9-91da0f41219e: 'Site settings' # Site settings
     32c4e10c-996f-48a4-a829-a8f288df551f: 'Featured Image' # Featured Image
     036f6fb3-bd0b-4d7d-a2a6-7beb59204c1a: Default # Default
-    42fd461d-399b-49e7-82b0-cbd90b09ea5c: 'Site Settings' # Site Settings
+    42fd461d-399b-49e7-82b0-cbd90b09ea5c: 'Site settings' # Site settings
     68da2dbd-7c2f-419d-ba37-ddcddc6294b2: Images # Images
     73ba057e-982c-4227-b5e1-a8b512bb0b1d: Entries # Entries
     569d97bb-e954-4391-8885-c8350b27d0b8: 'Title Only' # Title Only

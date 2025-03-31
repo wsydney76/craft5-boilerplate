@@ -18,6 +18,17 @@ previewTargets:
       -
         - refresh
         - '1'
+  -
+    __assoc__:
+      -
+        - label
+        - 'Article listing'
+      -
+        - urlFormat
+        - '{{ craft.entries.section(''articleListing'').siteId(object.siteId).one().url }}'
+      -
+        - refresh
+        - '1'
 propagationMethod: all
 siteSettings:
   982b0231-4baf-4422-b094-3d551c814f69: # Deutsch

@@ -1,6 +1,9 @@
 {
+  "name": "wsydney76/craft5-boilerplate",
+  "description": "A simple boilerplate for Craft CMS 5 projects.",
+  "version": "1.0.0",
   "require": {
-    "craftcms/cms": "^5.3.0",
+    "craftcms/cms": "^5.6.0",
     "nystudio107/craft-vite": "^5.0.1",
     "vlucas/phpdotenv": "^5.6.0"
   },
@@ -34,17 +37,11 @@
       "@php craft migrate/all --interactive=0"
     ]
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "repositories": [
     {
       "type": "composer",
       "url": "https://composer.craftcms.com",
       "canonical": false
-    },
-    {
-      "type": "path",
-      "url": "/var/www/plugins/extras"
     }
   ]
 }

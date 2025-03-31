@@ -1,3 +1,5 @@
+{# @param entry Entry The entry matched by Craft's routing #}
+{# By convention, in this project there are no web pages that are not backed by an entry #}
 <!DOCTYPE html>
 <html lang="{{ currentSite.language }}" style="overflow-y: scroll"> {# Always show vertical scrollbar, avoid anoying shifts #}
 
@@ -6,7 +8,7 @@
     entry
 } only %}
 
-{# Don't use pure black/white #}
+{# Don't use pure black/white. We use 'slate' as the preferred gray color flavor in this project. #}
 <body class="bg-slate-50 text-slate-900">
 
 {# For keyboard navigation: Jump to content, skip navigation stuff #}
@@ -23,17 +25,23 @@
 
 {# Let extending templates request the content width by setting a layoutMaxWidth variable #}
 {% block main %}
+    {# Use Tailwind's default breakpoints
+    see https://tailwindcss.com/docs/theme#default-theme-variable-reference #}
+
+    {# Lookup table available max widths #}
     {% set maxWidthClass = {
         md: 'max-w-(--breakpoint-md)',
         lg: 'max-w-(--breakpoint-lg)'
     } %}
 
+    {# Use default 'md' if no layoutMaxWidth variable is set #}
     <main class="{{ maxWidthClass[layoutMaxWidth ?? 'md'] }} mx-auto px-4">
 
         {# Use nested blocks so that extending templates
         have a choice whether they want to inherit formatting or not #}
         {% block title %}
-            <h1 id="content" class="mb-8 text-4xl font-bold">
+            {# A bit smaller font size on small screens #}
+            <h1 id="content" class="mb-8 text-3xl font-bold md:text-4xl ">
                 {% block titleText %}
                     {{ entry.title }}
                 {% endblock titleText %}
@@ -53,7 +61,11 @@
         {# Use nested blocks so that extending templates
         have a choice whether they want to use prose (rich-text) formatting or not #}
         {% block content %}
-            <article class="prose max-w-none">
+            {# prose: enables styling with the Tailwind typography plugin. #}
+            {# Used here without any customization, which you may like or not.. #}
+            {# see https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#element-modifiers #}
+            {# max-w-none: don't let the plugin restrict content width #}
+            <article class="prose prose-slate max-w-none">
                 {% block proseContent %}
                     {# If the current entry's field layout contains the bodyContent matrix field,
                     render its blocks using templates in _partions/entry/<blockType>.twig #}

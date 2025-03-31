@@ -1,9 +1,11 @@
 {# Simple page navigation #}
 
 {# @param pageInfo Pagination #}
+{# https://craftcms.com/docs/5.x/reference/twig/tags.html#the-pageinfo-variable #}
 
 {# Only show if there are more pages #}
 {% if pageInfo.totalPages > 1 %}
+    {# Don't apply prose classes to links #}
     <div class="mt-12 flex justify-between not-prose prose-base">
         <div>
             {% if pageInfo.prevUrl %}

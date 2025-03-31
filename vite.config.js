@@ -5,13 +5,16 @@ import tailwindcss from '@tailwindcss/vite';
 /**
  * @type {import('vite').UserConfig}
  */
-export default ({ command }) => {
+export default ({command}) => {
     return {
         plugins: [
             tailwindcss(),
         ],
         base: command === 'serve' ? '' : '/assets/dist/',
         build: {
+            // Create manifest.json file
+            // will be created in the outDir directory/.vite
+            // the 'manifestPath' setting in the config/vite.php file must be set to the same path
             manifest: true,
 
             // Don't rely on 'assets' as the default value for 'assetsDir' like this:
@@ -20,13 +23,23 @@ export default ({ command }) => {
 
             outDir: path.resolve(__dirname, 'web/dist/assets/'),
             assetsDir: './',
+
+            // The root js file
             rollupOptions: {
                 input: {
                     app: path.resolve(__dirname, 'resources/js/app.js'),
                 },
             }
         },
-        publicDir: path.resolve(__dirname, 'resources/public'),
+
+        // Enable use of @css alias in JS and CSS files
+        resolve: {
+            alias: {
+                '@css': path.resolve(__dirname, 'resources/css'),
+            },
+        },
+
+        // Vite dev server options, without any restrictions
         server: {
             host: true,
             port: 3000,

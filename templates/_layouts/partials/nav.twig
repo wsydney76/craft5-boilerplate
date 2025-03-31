@@ -31,13 +31,13 @@
     <a class=" text-2xl font-bold" href="{{ siteUrl('/') }}">{{ siteSettings.siteName }}</a>
 
     {# Get entries for primary navigation. Top level only for now #}
-    {% set navEntries = siteSettings.primaryNavigation.all %}
+    {% set navEntries = siteSettings.primaryNavigation.collect %}
 
     {# Get localized versions of the current entry #}
-    {% set localizedEntries = craft.app.isMultiSite ? entry.localized.all : [] %}
+    {% set localizedEntries = craft.app.isMultiSite ? entry.localized.collect : [] %}
 
     {# show nav if there is something to show... #}
-    {% if navEntries or localizedEntries %}
+    {% if navEntries.count or localizedEntries.count %}
 
         {# wide screens #}
         {% include '_layouts/partials/nav-desktop.twig' with {

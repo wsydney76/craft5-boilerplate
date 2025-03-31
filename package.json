@@ -2,7 +2,7 @@
   "name": "craft_boilerplate",
   "version": "1.0.0",
   "type": "module",
-  "description": "Minimum preconfigured Craft Starter",
+  "description": "Simple boilerplate for Craft CMS 5 with Tailwind CSS and Alpine.js",
   "author": "wsydney76",
   "private": true,
   "license": "Unlicense",
