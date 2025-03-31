@@ -257,7 +257,6 @@ class DefaultController extends Controller
     {
         $hasSeedImagesIndexed = Asset::find()->folderPath('seed/')->exists();
         if (!$hasSeedImagesIndexed) {
-            $this->stdout("Indexing seed images..." . PHP_EOL);
             Craft::$app->runAction('index-assets/one', [self::VOLUME]);
         }
 

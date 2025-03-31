@@ -15,8 +15,8 @@ ddev craft install --interactive=0 --username=$2 --password=$3 --email=admin@exa
 ddev npm install &&
 ddev npm run build &&
 ddev describe &&
+echo cd into your project and run 'ddev craft seed' to create some dummy content.
 echo cd into your project and run 'ddev launch' to open the site in a browser.
-echo Add some images, cd into your project and run 'ddev craft seed' to seed the database.
 
 
 

@@ -2,6 +2,7 @@
   "name": "wsydney76/craft5-boilerplate",
   "description": "A simple boilerplate for Craft CMS 5 projects.",
   "version": "1.0.0",
+  "license": "MIT",
   "require": {
     "craftcms/cms": "^5.6.0",
     "nystudio107/craft-vite": "^5.0.1",
