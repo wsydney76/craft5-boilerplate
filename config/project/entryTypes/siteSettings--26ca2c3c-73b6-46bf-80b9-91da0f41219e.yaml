@@ -3,7 +3,7 @@ fieldLayouts:
   3c3ec154-8d7a-447d-bea2-da0dcb32718f:
     cardView:
       - 'layoutElement:2e501cb0-8335-4ee8-a1ae-04a8aa64d12c'
-      - 'layoutElement:d6705047-ff7b-4840-80a4-d0c6cc5fdee2'
+      - 'layoutElement:1a6c090d-9705-452e-a51c-7703671869ce'
     tabs:
       -
         elementCondition: null
@@ -57,18 +57,18 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            dateAdded: '2025-03-26T18:56:16+00:00'
+            dateAdded: '2025-04-01T08:16:04+00:00'
             elementCondition: null
-            fieldUid: f9ab1fa9-b717-4a2f-9d7e-28c0c50d32f8 # Single Line Text
-            handle: copyright
+            fieldUid: b955f048-a606-4550-b6e7-6ebc117db7b1 # Copyright
+            handle: null
             includeInCards: true
             instructions: null
-            label: Copyright
+            label: null
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: d6705047-ff7b-4840-80a4-d0c6cc5fdee2
+            uid: 1a6c090d-9705-452e-a51c-7703671869ce
             userCondition: null
             warning: null
             width: 100

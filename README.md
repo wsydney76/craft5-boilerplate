@@ -33,7 +33,7 @@ the following additions:
 
 * Set system timezone to Europe/Berlin
 * Use a single `.env.example` file for all environments
-* Use environment specific config settings to config/general.php, dependent on CRAFT_ENVIRONMENT variable
+* Use environment specific config settings in config/general.php, dependent on CRAFT_ENVIRONMENT variable
 * Added more config settings to config/general.php
 * Added modules/_faux to enable autocompletion for some most frequently used variables in twig
 * Added /web/cpresources, /node_modules, /config/license.key to .gitignore
@@ -62,9 +62,13 @@ We tried to add a lot of comments to the code, so you can easily follow along.
 * `cd` into project directory
 * Run `bash setup/install <projectname> <username> <password>`
 
+`bash` just executes the script without it having execute permissions.
+
+If that's not available on your system, just run the commands in the script manually.
+
 ### Seed content
 
-* Add some images, min. 1024px wide
+* Some images are included (Copyright Pixabay). If you want to use your own images, you can replace them, min. 1024px wide.
 * Run `ddev craft seed` to create some dummy content
 * If you want to start with your own content, update the `Settings/Singles` sections with your own content.
 * If you don't want a multi-site setup, remove the second site in `Settings/Sites`.
@@ -95,6 +99,15 @@ Untested...
 * [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography) and [@tailwindcss/forms](https://github.com/tailwindlabs/tailwindcss-forms) plugins.
 * [Alpine JS 3](https://alpinejs.dev/start-here) for interactivity. Only used for the mobile navigation.
 * [@alpinejs/focus](https://alpinejs.dev/plugins/focus) for focus/keyboard handling inside the mobile navigation.
+
+## Matrix vs CKEditor
+
+We use a simple matrix field for content instead of CKEditor. 
+
+Personal preference aside, the main reason for this is that we want to keep content for different languages in sync.
+
+* Enforce that all languages have the same sequence of content blocks
+* Enforce that untranslatable content like images or styling options are in sync
 
 ## Props
 

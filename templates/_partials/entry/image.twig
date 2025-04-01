@@ -10,23 +10,65 @@ so possibly eager loading will not have a significant effect.
 Only measuring with real life data will tell.
 #}
 
+{% set width = entry.blockWidth.value ?? 'default' %}
+{% set fullHeight = entry.fullHeight %}
+
+
+{# Lookup tables for different image styles #}
+
+{# The transform to apply #}
+{% set transforms = {
+    default: {width: 768, height: fullHeight ? null : 432},
+    slim: {width: 600, height: fullHeight ? null : 338},
+    wide: {width: 1024, height: fullHeight ? null : 576},
+    max: {width: 1200, height: fullHeight ? null : 675},
+    full: {width: 2000, height: fullHeight ? null : 440}
+} %}
+
+{# The srcsets to apply. TODO: check values #}
+{% set srcsets = {
+    default: [768, 400, '2x'],
+    slim: [600, 400, '2x'],
+    wide: [1024, 768, 400, '2x'],
+    max: [1200, 768, 400, '2x'],
+    full: [2000, 1200, 768, 400, '2x']
+} %}
+
+{# The classes applied to the <figure> element #}
+{# TODO: Check 'full' classes so that no horizontal scrollbar appears #}
+{% set classes = {
+    default: '',
+    wide: 'lg:-mx-24',
+    max: 'lg:-mx-36',
+    full: 'ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]',
+    slim: 'lg:mx-24'
+} %}
+
 {% set image = entry.image.one %}
 
 {% if image %}
     {# Styling is applied by Tailwind typography plugin #}
-    <figure>
+    <figure class="{{ classes[width] }}">
         {# Always use a macro or an include to render images,
         there are too many possible options to take into account on every single usage. #}
         {% include '_partials/img.twig' with {
         	image,
-            transform: {width: 768},
-            srcset: [768, 400, '2x']
+            transform: transforms[width],
+            srcset: srcsets[width]
         } only %}
 
         {# Caption #}
-        {% if entry.caption %}
-            <figcaption>
-                {{ entry.caption }}
+        {% if entry.caption or image.copyright %}
+            <figcaption class="max-w-(--breakpoint-lg) mx-auto flex justify-between">
+                <div>
+                    {{ entry.caption }}
+                </div>
+
+                {# We don't place the copyright notice as an overlay on the image here,
+                because having caption and copyright in different places looks messy.#}
+                {% if image.copyright %}
+                    &copy; {{ image.copyright }}
+                {% endif %}
             </figcaption>
         {% endif %}
     </figure>

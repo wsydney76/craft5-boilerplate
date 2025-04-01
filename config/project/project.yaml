@@ -1,4 +1,4 @@
-dateModified: 1743414660
+dateModified: 1743504886
 elementSources:
   craft\elements\Asset:
     -
@@ -147,15 +147,20 @@ meta:
     73ba057e-982c-4227-b5e1-a8b512bb0b1d: Entries # Entries
     569d97bb-e954-4391-8885-c8350b27d0b8: 'Title Only' # Title Only
     982b0231-4baf-4422-b094-3d551c814f69: Deutsch # Deutsch
+    4040c097-c708-4f73-af92-e192d64c7de7: 'Block Width' # Block Width
     4463ad37-509f-457e-bae6-6289e2e8137a: Text # Text
     5047aa28-914a-45d9-b3aa-27b48e5d7abc: Home # Home
     507383ac-f144-4685-97a3-cb0772ef4370: 'Body Content' # Body Content
     6077873c-3a8d-436c-9096-4cd5eb01ffd9: Text # Text
+    a2efce19-8fd3-4955-bae4-49b22a76d1c9: Quote # Quote
     a4f2973e-4934-46f7-af6d-b72af78abade: English # English
     a4405e55-8856-409d-89d2-f50917b45d0c: 'Content Image' # Content Image
     a43152f2-a4cc-4557-870d-9b51dac64371: Search # Search
     adcd62ed-7061-46bd-99b4-d61f6c3de162: Article # Article
+    b955f048-a606-4550-b6e7-6ebc117db7b1: Copyright # Copyright
+    c2a5ed83-026a-480c-989c-ef51a4e46616: 'Quote Style' # Quote Style
     c6add583-fe6f-45b1-8bd6-f8c643492713: Teaser # Teaser
+    c6f73e0c-9738-4914-8340-19eb815bf411: Toggle # Toggle
     d3e6c245-4b55-490b-866c-2791cec4870a: Image # Image
     f9ab1fa9-b717-4a2f-9d7e-28c0c50d32f8: 'Single Line Text' # Single Line Text
     fc2bf718-1690-4182-88ae-da41b61cceb6: Home # Home

@@ -1,0 +1,33 @@
+columnSuffix: null
+handle: quoteStyle
+instructions: null
+name: 'Quote Style'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Default
+        -
+          - value
+          - default
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - 'Borders Top Bottom'
+        -
+          - value
+          - bordersTopBottom
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

@@ -1,0 +1,78 @@
+color: null
+fieldLayouts:
+  e73d6f8a-960d-4e01-9620-f60b46213327:
+    cardView:
+      - 'layoutElement:333ded51-9dba-4123-9579-275d8ba2e709'
+      - 'layoutElement:17a4ed68-222f-4e44-b068-1b06c36da685'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-04-01T09:48:38+00:00'
+            elementCondition: null
+            fieldUid: 4463ad37-509f-457e-bae6-6289e2e8137a # Text
+            handle: null
+            includeInCards: true
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 333ded51-9dba-4123-9579-275d8ba2e709
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-04-01T09:48:38+00:00'
+            elementCondition: null
+            fieldUid: f9ab1fa9-b717-4a2f-9d7e-28c0c50d32f8 # Single Line Text
+            handle: cite
+            includeInCards: true
+            instructions: null
+            label: Cite
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 17a4ed68-222f-4e44-b068-1b06c36da685
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: dfe1392e-5f7e-4dd1-855a-87a3ea13e454
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-04-01T09:50:55+00:00'
+            elementCondition: null
+            fieldUid: c2a5ed83-026a-480c-989c-ef51a4e46616 # Quote Style
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: Style
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f873949d-604c-4f33-abd7-2b66e60e4ee1
+            userCondition: null
+            warning: null
+            width: 100
+        name: Style
+        uid: e24f2a95-8b63-4ffd-a6de-30f2c3fe84eb
+        userCondition: null
+handle: quote
+hasTitleField: false
+icon: quotes
+name: Quote
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: language

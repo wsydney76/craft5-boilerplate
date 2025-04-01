@@ -28,7 +28,7 @@ class DefaultController extends Controller
     public const TYPE_HANDLE = 'page';
     public const VOLUME = 'images';
     public const NUM_ENTRIES = 20;
-
+    public const SEED_IMAGES_COPYRIGHT = 'Pixabay';
 
     protected Generator $faker;
 
@@ -107,7 +107,6 @@ class DefaultController extends Controller
 
         $entry = Entry::find()->section('siteSettings')->site('de')->one();
         $entry->siteName = 'Craft Boilerplate';
-        $entry->copyright = 'The Demo Inc.';
         Craft::$app->getElements()->saveElement($entry);
 
         $this->stdout("Default content set" . PHP_EOL);
@@ -154,7 +153,7 @@ class DefaultController extends Controller
             $entry->setFieldValue('teaser', $this->faker->text(40));
             $entry->setFieldValue('featuredImage', [$this->getRandomImageId()]);
             $entry->setFieldValue('bodyContent', [
-                'sortOrder' => ['new1', 'new2', 'new3', 'new4'],
+                'sortOrder' => ['new1', 'new2', 'new3', 'new4', 'new5'],
                 'blocks' => [
                     'new1' => [
                         'type' => 'text',
@@ -170,13 +169,20 @@ class DefaultController extends Controller
                         ],
                     ],
                     'new3' => [
+                        'type' => 'text',
+                        'fields' => [
+                            'text' => $this->faker->text(500),
+                        ],
+                    ],
+                    'new4' => [
                         'type' => 'image',
                         'fields' => [
                             'image' => [$this->getRandomImageId()],
                             'caption' => $this->faker->text(50),
+                            'blockWidth' => $this->faker->randomElement(['default', 'slim', 'wide', 'max', 'full']),
                         ],
                     ],
-                    'new4' => [
+                    'new5' => [
                         'type' => 'text',
                         'fields' => [
                             'text' => $this->faker->text(500),
@@ -211,7 +217,7 @@ class DefaultController extends Controller
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        $images = Asset::find()->kind('image')->all();
+        $images = Asset::find()->kind('image')->hasAlt(false)->all();
         foreach ($images as $image) {
             Console::output($image->title);
             $image->alt = $this->faker->text(50);
@@ -258,6 +264,8 @@ class DefaultController extends Controller
         $hasSeedImagesIndexed = Asset::find()->folderPath('seed/')->exists();
         if (!$hasSeedImagesIndexed) {
             Craft::$app->runAction('index-assets/one', [self::VOLUME]);
+            // Add copyright to seed images
+            $this->actionAddCopyrightToSeedImages();
         }
 
         $query = Asset::find()->kind('image')->width('> 1000');
@@ -268,6 +276,26 @@ class DefaultController extends Controller
         }
 
         return true;
+    }
+
+    /**
+     * @return void
+     * @throws ElementNotFoundException
+     * @throws Exception
+     * @throws Throwable
+     */
+    public function actionAddCopyrightToSeedImages(): void
+    {
+        $this->stdout('Adding copyright to seed images...');
+        $seedImages = Asset::find()
+            ->folderPath('seed/')
+            ->copyright(':empty:')
+            ->all();
+        foreach ($seedImages as $seedImage) {
+            $seedImage->copyright = self::SEED_IMAGES_COPYRIGHT;
+            Craft::$app->getElements()->saveElement($seedImage);
+        }
+        $this->stdout('Done' . PHP_EOL);
     }
 
 }

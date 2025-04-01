@@ -10,10 +10,19 @@
     The '2x' increases image quality significantly, at the cost of bigger images.#}
     {# loading: eager: Don't lazy load images that are always above the fold. #}
 
-    {% include '_partials/img.twig' with {
-    	image,
-        transform: {width: 1024, height: 400},
-        srcset: [1024, 768, 400, '2x'],
-        attr: {loading: 'eager'}
-    } only %}
+    <figure class="relative">
+        {% include '_partials/img.twig' with {
+            image,
+            transform: {width: 1024, height: 400},
+            srcset: [1024, 768, 400, '2x'],
+            attr: {loading: 'eager'}
+        } only %}
+
+        {# Place copyright notice as transparent overlay in the bottom right corner #}
+        {% if image.copyright %}
+            <figcaption class="absolute bottom-0 right-0 bg-black/30 px-2 py-1 text-white text-sm">
+                &copy; {{ image.copyright }}
+            </figcaption>    
+        {% endif %}
+    </figure>
 {% endif %}

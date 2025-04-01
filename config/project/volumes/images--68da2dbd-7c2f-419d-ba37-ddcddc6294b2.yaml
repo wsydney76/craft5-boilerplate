@@ -4,6 +4,7 @@ fieldLayouts:
   f454fc49-d266-4120-8b9f-37fab45417f9:
     cardView:
       - 'layoutElement:b8920e32-b702-4cd5-98d9-dddc5f73b319'
+      - 'layoutElement:0c7b4523-d11f-4497-8478-13d49872b771'
       - imageSize
     tabs:
       -
@@ -65,8 +66,39 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            dateAdded: '2025-04-01T08:18:12+00:00'
+            elementCondition: null
+            fieldUid: b955f048-a606-4550-b6e7-6ebc117db7b1 # Copyright
+            handle: null
+            includeInCards: true
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0c7b4523-d11f-4497-8478-13d49872b771
+            userCondition: null
+            warning: null
+            width: 100
         name: Content
         uid: 66c440bd-d7c0-4c81-9cd4-e99b9b404dfb
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-04-01T10:54:46+00:00'
+            elementCondition: null
+            template: _cp/related-entries.twig
+            templateMode: site
+            type: craft\fieldlayoutelements\Template
+            uid: 59b13985-b5d3-4870-a9db-08f54d0214f7
+            userCondition: null
+            width: 100
+        name: Relationships
+        uid: 7fccc13a-c9cb-447b-b804-744aaac6c4f5
         userCondition: null
 fs: $FILES_FS
 handle: images

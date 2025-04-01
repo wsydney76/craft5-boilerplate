@@ -1,0 +1,66 @@
+columnSuffix: null
+handle: blockWidth
+instructions: null
+name: 'Block Width'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Default
+        -
+          - value
+          - default
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Slim
+        -
+          - value
+          - slim
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Wider
+        -
+          - value
+          - wide
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Full content width (like post image)'
+        -
+          - value
+          - max
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Full
+        -
+          - value
+          - full
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

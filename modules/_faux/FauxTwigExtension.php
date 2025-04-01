@@ -59,7 +59,7 @@ class FauxTwigExtension extends AbstractExtension implements GlobalsInterface
             'pageInfo' => new Paginate(),
 
             // Preloaded singles
-            'siteInfo' => new Entry(),
+            'siteSettings' => new Entry(),
 
 
         ];

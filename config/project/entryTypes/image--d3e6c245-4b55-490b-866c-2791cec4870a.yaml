@@ -42,6 +42,44 @@ fieldLayouts:
         name: Content
         uid: 0fc69030-b29a-4edb-90c7-b1af7fff015a
         userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-04-01T10:11:00+00:00'
+            elementCondition: null
+            fieldUid: 4040c097-c708-4f73-af92-e192d64c7de7 # Block Width
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: Width
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 78978db1-f224-4837-9875-384cd96c1e06
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-04-01T10:11:00+00:00'
+            elementCondition: null
+            fieldUid: c6f73e0c-9738-4914-8340-19eb815bf411 # Toggle
+            handle: fullHeight
+            includeInCards: false
+            instructions: null
+            label: 'Full Height'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 243e2479-d524-4a65-b236-1ef2bf4e5a1e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Style
+        uid: 99ddf26e-0d79-4d6d-85f4-e1d754aef24f
+        userCondition: null
 handle: image
 hasTitleField: false
 icon: image

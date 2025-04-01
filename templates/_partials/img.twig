@@ -19,6 +19,15 @@ https://craftcms.com/docs/5.x/development/image-transforms.html#defining-transfo
 
 {# Don't use a srcset by default #}
 {% set srcset = srcset is defined ? srcset : null %}
+ 
+{# Don't apply 2x srcsize if the image is not wide enough #}
+{% if srcset and '2x' in srcset %}
+    {% set transformWidth = transform.width is defined ? transform.width : 1024 %}
+    {# Accept a little bit of upscaling #}
+    {% if image.width <= 1.8 * transformWidth %}
+        {% set srcset = srcset|without(['2x']) %}
+    {% endif %}
+{% endif %}
 
 {# Lazy load image by default #}
 {% set attr = attr is defined ? attr : {loading: 'lazy'} %}
