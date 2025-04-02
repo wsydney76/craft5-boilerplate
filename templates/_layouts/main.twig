@@ -1,7 +1,10 @@
 {# @param entry Entry The entry matched by Craft's routing #}
 {# By convention, in this project there are no web pages that are not backed by an entry #}
 <!DOCTYPE html>
-<html lang="{{ currentSite.language }}" style="overflow-y: scroll"> {# Always show vertical scrollbar, avoid anoying shifts #}
+<html lang="{{ currentSite.language }}" style="overflow-y: scroll; overflow-x: hidden;">
+{# overflow-y: scroll: Always show vertical scrollbar, avoid anoying shifts #}
+{# overflow-x: hidden; Don't show horizontal scrollbar image block is set to 'Full width' #}
+{# Defining this as inline styles avoids flickering before Tailwind kicks in. #}
 
 {# The head html #}
 {% include '_layouts/partials/head.twig' with {

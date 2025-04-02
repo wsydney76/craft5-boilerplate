@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+* Fixed a bug where a horizontal scrollbar appeared when setting an image width to `Full`.
+* Fixed a styling issue with the `Quote` field type in the CP.
+* Fixed a cosmetic issue where the seed controller replaced all dots in a generated title, not just the last one.
+
 ## 1.1.0 2025-04-01
 
 * Added Copyright notice to images.

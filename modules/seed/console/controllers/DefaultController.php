@@ -148,7 +148,8 @@ class DefaultController extends Controller
             $entry->sectionId = $section->id;
             $entry->typeId = $type->id;
             $entry->authorId = $user->id;
-            $entry->title = str_replace('.', '', $title);
+            // Don't let a title end with a dot
+            $entry->title = rtrim($title, '.');;
             $entry->postDate = $this->faker->dateTimeInInterval('-2 days', '-3 months');
             $entry->setFieldValue('teaser', $this->faker->text(40));
             $entry->setFieldValue('featuredImage', [$this->getRandomImageId()]);
@@ -179,6 +180,7 @@ class DefaultController extends Controller
                         'fields' => [
                             'image' => [$this->getRandomImageId()],
                             'caption' => $this->faker->text(50),
+                            // Set a random image width
                             'blockWidth' => $this->faker->randomElement(['default', 'slim', 'wide', 'max', 'full']),
                         ],
                     ],
