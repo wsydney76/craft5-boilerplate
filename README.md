@@ -109,6 +109,51 @@ Personal preference aside, the main reason for this is that we want to keep cont
 * Enforce that all languages have the same sequence of content blocks
 * Enforce that untranslatable content like images or styling options are in sync
 
+However, you may want to replace the plaintext field in the text matrix block with a CKEditor field, 
+especially if you want to apply simple formating as bold/italic or create links to other entries.
+
+Take these steps:
+
+* Install the CKEditor plugin: `ddev composer require "craftcms/ckeditor:^4.6.0" -w && ddev craft plugin/install ckeditor`
+* Edit the `Text` entry type
+* Add new field with  
+* * name `Rich Text`, 
+* * handle `richText`, 
+* * field type `CKEditor`, 
+* * translation method `Translate for each languge`,
+* * CKEditor config: `Simple` (or add your own)
+* Save the entry type (with both the old and the new field)
+* Run `ddev craft resave/entries --type=text --site=* --set=richText --to="={text|md}"` to migrate the content from the old field to the new field
+* Remove the old field from the entry type
+* Edit `templates/_partials/entry/text.twig` and replace `{{ entry.text|... }}` with `{{ entry.richText }}`
+* Edit the used CKEditor config. Recommended:
+* * Toolbar: Bold, Italic, Bulleted List, Numbered List, Link
+* * Uncheck heading levels 1-6
+* * Config options (JSON): See [docs](https://github.com/craftcms/ckeditor?tab=readme-ov-file#examples) for more options.
+```json
+{
+  "link": {
+    "decorators": {
+      "openInNewTab": {
+        "attributes": {
+          "rel": "noopener noreferrer",
+          "target": "_blank"
+        },
+        "label": "Open in new tab?",
+        "mode": "manual"
+      }
+    }
+  },
+  "list": {
+    "properties": {
+      "reversed": true,
+      "startIndex": true,
+      "styles": false
+    }
+  }
+}
+```
+
 ## Props
 
 Thanks to Aylin, Karla, Lucy, Lori, Moni.
