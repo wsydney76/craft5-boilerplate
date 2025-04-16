@@ -1,7 +1,9 @@
 # Changelog
 
-## Unreleased
+## 1.2.0 2025-04-16
 
+* Updated Craft CMS to 5.7.0.
+* Updated section specific entry type names.
 * Fixed a bug where a horizontal scrollbar appeared when setting an image width to `Full`.
 * Fixed a styling issue with the `Quote` field type in the CP.
 * Fixed a cosmetic issue where the seed controller replaced all dots in a generated title, not just the last one.

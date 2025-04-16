@@ -2,6 +2,7 @@ defaultPlacement: end
 enableVersioning: true
 entryTypes:
   -
+    name: 'Article listing page'
     uid: 1c313aeb-8726-40d7-8740-dab29921fc5f # Listing
 handle: articleListing
 maxAuthors: 1

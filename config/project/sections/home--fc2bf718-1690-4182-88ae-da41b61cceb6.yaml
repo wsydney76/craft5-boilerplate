@@ -2,6 +2,7 @@ defaultPlacement: end
 enableVersioning: true
 entryTypes:
   -
+    name: 'Home page'
     uid: 5047aa28-914a-45d9-b3aa-27b48e5d7abc # Home
 handle: home
 maxAuthors: 1

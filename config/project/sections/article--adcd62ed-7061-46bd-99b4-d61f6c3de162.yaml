@@ -2,6 +2,7 @@ defaultPlacement: end
 enableVersioning: true
 entryTypes:
   -
+    name: 'Article page'
     uid: 8b9185b8-d2ef-4b7a-8afb-3cdc18a63505 # Page
 handle: article
 maxAuthors: 1

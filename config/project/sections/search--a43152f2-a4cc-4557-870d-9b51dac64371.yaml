@@ -2,6 +2,7 @@ defaultPlacement: end
 enableVersioning: true
 entryTypes:
   -
+    name: 'Search page'
     uid: 569d97bb-e954-4391-8885-c8350b27d0b8 # Title Only
 handle: search
 maxAuthors: 1
