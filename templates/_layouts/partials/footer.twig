@@ -6,10 +6,9 @@
         &copy; {{ now|date('Y') }} {{ siteSettings.copyright }}
     </div>
     <div>
-        {# Add an edit link if a user is logged in and has permissions to edit the entry
-        This won't work if the page is cached #}
-        {% if currentUser and entry.canSave(currentUser) %}
-            <a href="{{ entry.cpEditUrl }}" target="_blank">{{ 'Edit'|t }}</a>
-        {% endif %}
+        {# Display an edit link regardless of permission for now. #}
+        {# Can be checked for "currentUser and entry.canSave(currentUser)" #}
+        {# However, this won't work for cached pages #}
+        <a href="{{ entry.cpEditUrl }}" target="_blank">{{ 'Edit'|t }}</a>
     </div>
 </footer>

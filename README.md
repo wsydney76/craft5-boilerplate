@@ -66,6 +66,8 @@ We tried to add a lot of comments to the code, so you can easily follow along.
 
 If that's not available on your system, just run the commands in the script manually.
 
+NOTE: 1.3.0+ requires DDEV 1.24.6+. If you are using an older version, you can use the `1.2.0` tag, or run the setup manually.
+
 ### Seed content
 
 * Some images are included (Copyright Pixabay). If you want to use your own images, you can replace them, min. 1024px wide.

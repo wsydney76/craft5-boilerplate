@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 2025-05-27
+
+* Adjusted setup process to DDEV 1.24.5+: `Craft CMS settings now reside in .ddev/.env.web; .env is no longer managed by DDEV.`
+* Always display an `Edit` link.
+* Updated Craft CMS to 5.7.7.
+
 ## 1.2.0 2025-04-16
 
 * Updated Craft CMS to 5.7.0.
