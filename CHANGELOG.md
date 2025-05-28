@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.1 2025-05-18
+
+* Use default Vite ports
+* Added compression of assets to Vite build
+
 ## 1.3.0 2025-05-27
 
 * Adjusted setup process to DDEV 1.24.5+: `Craft CMS settings now reside in .ddev/.env.web; .env is no longer managed by DDEV.`

@@ -1,5 +1,6 @@
 import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
+import viteCompression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 /**
@@ -9,6 +10,9 @@ export default ({command}) => {
     return {
         plugins: [
             tailwindcss(),
+            viteCompression({
+                filter: /\.(js|mjs|json|css|map)$/i,
+            })
         ],
         base: command === 'serve' ? '' : '/assets/dist/',
         build: {
@@ -42,7 +46,7 @@ export default ({command}) => {
         // Vite dev server options, without any restrictions
         server: {
             host: true,
-            port: 3000,
+            port: 5173,
             strictPort: true,
             allowedHosts: true,
             cors: true,
