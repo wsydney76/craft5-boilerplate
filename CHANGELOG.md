@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+* Updated Craft CMS to 5.7.10.
+* Updated Tailwind CSS to 4.1.10.
+
 ## 1.3.1 2025-05-18
 
 * Use default Vite ports
