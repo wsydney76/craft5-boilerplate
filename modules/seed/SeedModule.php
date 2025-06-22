@@ -14,6 +14,7 @@ class SeedModule extends BaseModule
 {
     public function init(): void
     {
+        // The alias is needed for "craft help" to work
         Craft::setAlias('@modules/seed', __DIR__);
 
         // This module is only for console commands, so we can keep it simple
