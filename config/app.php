@@ -26,5 +26,5 @@ use modules\seed\SeedModule;
 return [
     'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
     'modules' => ['seed' => SeedModule::class],
-    'bootstrap' => ['seed'],
+    'bootstrap' => [],
 ];
