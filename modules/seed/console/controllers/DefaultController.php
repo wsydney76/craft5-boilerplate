@@ -13,6 +13,7 @@ use Faker\Generator;
 use GuzzleHttp\Exception\GuzzleException;
 use Throwable;
 use yii\base\Exception;
+use yii\base\InvalidRouteException;
 use yii\console\ExitCode;
 use yii\helpers\Console;
 use function count;
@@ -53,6 +54,8 @@ class DefaultController extends Controller
     }
 
     /**
+     * Sets default content for single entries in the home, articleListing, search, and siteSettings sections.
+     *
      * @throws ElementNotFoundException
      * @throws Throwable
      * @throws Exception
@@ -114,6 +117,15 @@ class DefaultController extends Controller
     }
 
 
+    /**
+     * Creates a number of articles in the article section.
+     *
+     * @param int $num
+     * @return int
+     * @throws ElementNotFoundException
+     * @throws Exception
+     * @throws Throwable
+     */
     public function actionCreateArticles(int $num = self::NUM_ENTRIES): int
     {
         if (!$this->hasImages($num)) {
@@ -205,6 +217,8 @@ class DefaultController extends Controller
     }
 
     /**
+     * Sets provisional alt text for images that do not have alt text set.
+     *
      * @throws Throwable
      * @throws Exception
      * @throws ElementNotFoundException
@@ -229,6 +243,11 @@ class DefaultController extends Controller
         return ExitCode::OK;
     }
 
+    /**
+     * Retrieves all entries to create missing image transforms.
+     *
+     * @return int
+     */
     public function actionCreateTransforms(): int
     {
 
@@ -256,12 +275,27 @@ class DefaultController extends Controller
         return ExitCode::OK;
     }
 
-    private function getRandomImageId()
+    /**
+     * Gets a random image ID from the asset index.
+     * @return int|null
+     */
+    private function getRandomImageId(): ?int
     {
-        return Asset::find()->kind('image')->width('> 1000')->orderBy('rand()')->one()->id;
+        return Asset::find()->kind('image')->width('> 1000')->orderBy('rand()')->one()?->id;
     }
 
-    private function hasImages(int $num = self::NUM_ENTRIES)
+    /**
+     * Checks if there are enough images indexed in the asset index.
+     *
+     * @param int $num
+     * @return bool
+     * @throws ElementNotFoundException
+     * @throws Exception
+     * @throws Throwable
+     * @throws InvalidRouteException
+     * @throws \yii\console\Exception
+     */
+    private function hasImages(int $num = self::NUM_ENTRIES): bool
     {
         $hasSeedImagesIndexed = Asset::find()->folderPath('seed/')->exists();
         if (!$hasSeedImagesIndexed) {
@@ -281,6 +315,8 @@ class DefaultController extends Controller
     }
 
     /**
+     * Make sure all seed images have a copyright set.
+     *
      * @return void
      * @throws ElementNotFoundException
      * @throws Exception
