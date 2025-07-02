@@ -2,8 +2,9 @@
 
 ## Unreleased
 
-* Updated Craft CMS to 5.7.10.
+* Updated Craft CMS to 5.8.0
 * Updated Tailwind CSS to 4.1.10.
+* Cleanup install script
 
 ## 1.3.1 2025-05-18
 
