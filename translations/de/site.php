@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'Add topic' => 'Thema hinzufügen',
     'Article listing page' => 'Artikel-Übersichtsseite',
     'Article listing' => 'Artikelliste',
     'Article page' => 'Artikel-Seite',
@@ -53,14 +54,14 @@ return [
     'Style' => 'Stil',
     'Teaser' => 'Teaser',
     'This will be used as a fallback if an entry does not specify an own featured image' => 'Dies wird als Fallback verwendet, wenn ein Eintrag kein eigenes Beitragsbild angibt',
+    'Topic' => 'Thema',
+    'Topics' => 'Themen',
     'Wider' => 'Breiter',
     'Width' => 'Breite',
     'Your search for "{q}" didn’t return any results.' => 'Ihre Suche nach "{q}" ergab keine Treffer.',
+    '{count,plural,=1{Topic} other{Topics}}' => '{count,plural,=1{Thema} other{Themen}}',
+    '{count,plural,=1{more} other{more}}' => '{count,plural,=1{weiterer} other{weitere}}',
     '{count,plural,=1{search result} other{search results}}' => '{count,plural,=1{Suchergebnis} other{Suchergebnisse}}',
     '“' => '„',
     '”' => '“',
-    'Topic' => 'Thema',
-    'Topics' => 'Themen',
-    '{count,plural,=1{Topic} other{Topics}}' => '{count,plural,=1{Thema} other{Themen}}',
-    'Add topic' => 'Thema hinzufügen',
 ];
