@@ -3,6 +3,8 @@ description: null
 fieldLayouts:
   c7b1d34e-c42a-43d4-ae97-536e0e44d497:
     cardThumbAlignment: end
+    cardView:
+      - 'layoutElement:54437304-a495-4782-8b28-5915e1edf914'
     tabs:
       -
         elementCondition: null
@@ -46,7 +48,7 @@ fieldLayouts:
             includeInCards: false
             instructions: 'This will be used as fallback, if the latest article for this topic does not have a featured image.'
             label: null
-            providesThumbs: false
+            providesThumbs: true
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

@@ -1,0 +1,38 @@
+{% set entries = query.all %}
+
+<div class="space-y-4">
+    {% for entry in entries %}
+        <div class="flex  border border-slate-300 shadow-md">
+            {% set latestArticle = craft.entries.section('article').topics(entry).one %}
+            {% set featuredImage = latestArticle.featuredImage.one ?? entry.featuredImage.eagerly().one ?? siteSettings.defaultFeaturedImage.one  %}
+            <div>
+                {% if featuredImage %}
+                    <a href="{{ entry.url }}">
+                        {% include '_partials/img.twig' with {
+                            image: featuredImage,
+                            transform: {width: 200, height: 150}
+                        } only %}
+                    </a>
+                {% endif %}
+            </div>
+            <div class="p-4 space-y-2">
+                <h2 class="font-semibold text-lg">{{ entry.link }}</h2>
+                {% if entry.teaser %}
+                    <div>
+                        {{ entry.teaser }}
+                    </div>
+                {% endif %}
+                
+
+                {% if latestArticle %}
+                    {% set count = craft.entries.section('article').topics(entry).count - 1 %}
+                    <div>
+                        <span class="font-semibold">{{ latestArticle.link }}</span>
+                        {{ 'and'|t }} {{ count }} {{ '{count,plural,=1{more} other{more}}'|t({count: count}) }}
+                    </div>
+                {% endif %}
+                
+            </div>
+        </div>
+    {% endfor %}
+</div>

@@ -1,8 +1,7 @@
 {% extends "_layouts/main.twig" %}
 
-{% block proseContent %}
-    {# TODO: Show topics as cards with '<title of latest article> and x more' #}
-    {% include '_partials/entries-list.twig' with {
+{% block content %}
+    {% include '_entries/topic/partials/entries-list.twig' with {
         query: craft.entries
             .section('topic')
 
