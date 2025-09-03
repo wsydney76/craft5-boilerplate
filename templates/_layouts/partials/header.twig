@@ -12,7 +12,7 @@
     {# Render featured image, if present in the entry's field layout, or provided as param #}
     {% if featuredImage is defined or entry.featuredImage %}
         {% include '_partials/featured-image.twig' with {
-            image: featuredImage ?? entry.featuredImage.one
+            image: featuredImage ?? entry.featuredImage.one ?? null
         } only %}
     {% endif %}
 
