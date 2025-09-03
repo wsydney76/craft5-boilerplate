@@ -25,10 +25,14 @@ use function str_replace;
 class DefaultController extends Controller
 {
     public $defaultAction = 'index';
-    public const SECTION_HANDLE = 'article';
-    public const TYPE_HANDLE = 'page';
+    public const ARTICLE_SECTION_HANDLE = 'article';
+    public const ARTICLE_TYPE_HANDLE = 'page';
+
+    public const TOPIC_SECTION_HANDLE = 'topic';
+    public const TOPIC_TYPE_HANDLE = 'topic';
     public const VOLUME = 'images';
-    public const NUM_ENTRIES = 20;
+    public const NUM_ARTICLES = 20;
+    public const NUM_TOPICS = 5;
     public const SEED_IMAGES_COPYRIGHT = 'Pixabay';
 
     protected Generator $faker;
@@ -47,6 +51,7 @@ class DefaultController extends Controller
         }
 
         $this->actionSetDefaultContent();
+        $this->actionCreateTopics();
         $this->actionCreateArticles();
         $this->actionSetAlt();
         $this->actionCreateTransforms();
@@ -117,6 +122,58 @@ class DefaultController extends Controller
     }
 
 
+    public function actionCreateTopics(int $num = self::NUM_TOPICS): int
+    {
+        if (!$this->hasImages($num)) {
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+
+        $section = Craft::$app->entries->getSectionByHandle(self::TOPIC_SECTION_HANDLE);
+        if (!$section) {
+            $this->stderr("Invalid section") . PHP_EOL;
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+
+        $type = Craft::$app->entries->getEntryTypeByHandle(self::TOPIC_TYPE_HANDLE);
+        if (!$type) {
+            $this->stderr("Invalid entry type") . PHP_EOL;
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+
+        if ($this->interactive && !$this->confirm("Create {$num} entries of type '{$section->name}'? Make sure a number of images exist!", true)) {
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+
+        $this->stdout("Creating {$num} entries of type '{$section->name}'." . PHP_EOL);
+
+        $user = User::find()->admin()->one();
+
+        for ($i = 1; $i <= $num; ++$i) {
+            $title = $this->faker->text(20);
+            $this->stdout("[{$i}/{$num}] $title");
+
+            $entry = new Entry();
+            $entry->sectionId = $section->id;
+            $entry->typeId = $type->id;
+            $entry->authorId = $user->id;
+            // Don't let a title end with a dot
+            $entry->title = rtrim($title, '.');;
+            $entry->postDate = $this->faker->dateTimeInInterval('-2 days', '-3 months');
+            $entry->setFieldValue('teaser', $this->faker->text(40));
+            $entry->setFieldValue('featuredImage', [$this->getRandomImageId()]);
+            $entry->setFieldValue('topics', [$this->getRandomTopicId()]);
+
+            if (!Craft::$app->elements->saveElement($entry)) {
+                $this->stderr("Error saving entry: " . print_r($entry->getErrors(), true));
+                return ExitCode::UNSPECIFIED_ERROR;
+            }
+
+            $this->stdout(PHP_EOL);
+        }
+
+        return ExitCode::OK;
+    }
+
     /**
      * Creates a number of articles in the article section.
      *
@@ -126,19 +183,19 @@ class DefaultController extends Controller
      * @throws Exception
      * @throws Throwable
      */
-    public function actionCreateArticles(int $num = self::NUM_ENTRIES): int
+    public function actionCreateArticles(int $num = self::NUM_ARTICLES): int
     {
         if (!$this->hasImages($num)) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        $section = Craft::$app->entries->getSectionByHandle(self::SECTION_HANDLE);
+        $section = Craft::$app->entries->getSectionByHandle(self::ARTICLE_SECTION_HANDLE);
         if (!$section) {
             $this->stderr("Invalid section") . PHP_EOL;
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        $type = Craft::$app->entries->getEntryTypeByHandle(self::TYPE_HANDLE);
+        $type = Craft::$app->entries->getEntryTypeByHandle(self::ARTICLE_TYPE_HANDLE);
         if (!$type) {
             $this->stderr("Invalid entry type") . PHP_EOL;
             return ExitCode::UNSPECIFIED_ERROR;
@@ -284,6 +341,11 @@ class DefaultController extends Controller
         return Asset::find()->kind('image')->width('> 1000')->orderBy('rand()')->one()?->id;
     }
 
+    private function getRandomTopicId(): ?int
+    {
+        return Entry::find()->section('topic')->orderBy('rand()')->one()?->id;
+    }
+
     /**
      * Checks if there are enough images indexed in the asset index.
      *
@@ -295,7 +357,7 @@ class DefaultController extends Controller
      * @throws InvalidRouteException
      * @throws \yii\console\Exception
      */
-    private function hasImages(int $num = self::NUM_ENTRIES): bool
+    private function hasImages(int $num = self::NUM_ARTICLES): bool
     {
         $hasSeedImagesIndexed = Asset::find()->folderPath('seed/')->exists();
         if (!$hasSeedImagesIndexed) {
