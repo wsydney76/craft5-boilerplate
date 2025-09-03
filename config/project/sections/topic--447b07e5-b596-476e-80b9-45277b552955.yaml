@@ -1,0 +1,36 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: ca9b7602-7525-402c-8b16-05edf6c76db5 # Topic
+handle: topic
+maxAuthors: 1
+name: Topic
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primäre Eintrag Seite'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  982b0231-4baf-4422-b094-3d551c814f69: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: _entries/topic/topic.twig
+    uriFormat: 'themen/{slug}'
+  a4f2973e-4934-46f7-af6d-b72af78abade: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: _entries/topic/topic.twig
+    uriFormat: 'topics/{slug}'
+structure:
+  maxLevels: 1
+  uid: 988acb1e-e0eb-46fb-b86c-b5b470f9f2b9
+type: structure

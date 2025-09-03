@@ -19,8 +19,10 @@
 
 {# The header section #}
 {% block header %}
+    {# Let templates define a featured image by setting a 'featuredImage' variable #}
     {% include '_layouts/partials/header.twig' with {
-        entry
+        entry,
+        featuredImage: featuredImage ?? null
     } only %}
     {# The endblock can optionally repeat the block name,
     for better orientation in templates with a lot nested blocks #}

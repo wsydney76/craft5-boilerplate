@@ -59,4 +59,8 @@ return [
     '{count,plural,=1{search result} other{search results}}' => '{count,plural,=1{Suchergebnis} other{Suchergebnisse}}',
     '“' => '„',
     '”' => '“',
+    'Topic' => 'Thema',
+    'Topics' => 'Themen',
+    '{count,plural,=1{Topic} other{Topics}}' => '{count,plural,=1{Thema} other{Themen}}',
+    'Add topic' => 'Thema hinzufügen',
 ];

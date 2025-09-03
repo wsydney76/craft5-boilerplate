@@ -1,0 +1,13 @@
+{% set entries = query.all %}
+
+{% if entries %}
+    <h2>{{ heading|t({count: entries|length}) }}</h2>
+    <div class="flex flex-wrap space-x-4">
+        {% for entry in entries %}
+            {% include '_partials/linkButton.twig' with {
+            	url: entry.url,
+                caption: entry.title
+            } only %}
+        {% endfor %}
+    </div>
+{% endif %}

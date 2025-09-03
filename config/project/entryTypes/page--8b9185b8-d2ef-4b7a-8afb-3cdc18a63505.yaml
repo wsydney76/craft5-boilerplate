@@ -1,6 +1,8 @@
 color: null
+description: null
 fieldLayouts:
   1c964c88-15f1-49aa-943c-b0a4ca599abd:
+    cardThumbAlignment: end
     cardView:
       - 'layoutElement:6f6af85d-639e-4a43-aa9a-845493d7b239'
       - postDate
@@ -40,6 +42,7 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2025-03-26T16:02:02+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: 32c4e10c-996f-48a4-a829-a8f288df551f # Featured Image
             handle: null
@@ -56,6 +59,7 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2025-03-26T16:39:50+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: c6add583-fe6f-45b1-8bd6-f8c643492713 # Teaser
             handle: null
@@ -72,6 +76,7 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2025-03-26T16:02:02+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: 507383ac-f144-4685-97a3-cb0772ef4370 # Body Content
             handle: null
@@ -83,6 +88,33 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 9c902764-144f-4e88-b99a-1796da34b3d5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-09-03T07:34:46+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\elements\conditions\entries\SectionConditionRule
+                  operator: in
+                  uid: 50664375-3f5c-4039-89a6-a291fc7677d5
+                  values:
+                    - adcd62ed-7061-46bd-99b4-d61f6c3de162 # Article
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: d340a302-6358-46c5-b354-a0a2909978fa # Topics
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2add62ee-9362-4537-bb43-bdfc56cbbec8
             userCondition: null
             warning: null
             width: 100

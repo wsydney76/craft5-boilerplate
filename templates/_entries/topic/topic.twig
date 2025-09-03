@@ -1,0 +1,18 @@
+{% extends "_layouts/main.twig" %}
+
+{# Make the layout template use the wide layout #}
+{% set layoutMaxWidth = 'lg' %}
+
+{# Use featured image of latest article for this topic #}
+{% set latestArticle = craft.entries.topics(entry).one %}
+{% if latestArticle %}
+    {% set featuredImage = latestArticle.featuredImage.one %}
+{% endif %}
+
+{% block content %}
+    {% include '_entries/article/partials/article-cards.twig' with {
+        query: craft.entries
+            .topics(entry),
+        perPage: 12
+    } only %}
+{% endblock %}

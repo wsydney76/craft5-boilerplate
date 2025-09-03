@@ -1,0 +1,87 @@
+color: null
+description: null
+fieldLayouts:
+  c7b1d34e-c42a-43d4-ae97-536e0e44d497:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-09-03T07:28:19+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 1ad39cb1-f002-4b7f-831b-ee3f32ceb168
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-09-03T08:14:37+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 32c4e10c-996f-48a4-a829-a8f288df551f # Featured Image
+            handle: null
+            includeInCards: false
+            instructions: 'This will be used as fallback, if the latest article for this topic does not have a featured image.'
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a2738b46-9b83-4f46-b226-3e1f77657522
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-09-03T07:30:57+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: c6add583-fe6f-45b1-8bd6-f8c643492713 # Teaser
+            handle: null
+            includeInCards: true
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 54437304-a495-4782-8b28-5915e1edf914
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: e324b1f0-9002-4a2e-8b9f-0a2b1d54f31b
+        userCondition: null
+handle: topic
+hasTitleField: true
+icon: list-dropdown
+name: Topic
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: language
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: language

@@ -1,5 +1,6 @@
 {# The header body section #}
 {# @param entry Entry #}
+{# @param featuredImage Asset|null #}
 
 <header class="mb-8 max-w-(--breakpoint-lg) mx-auto pt-8">
 
@@ -8,10 +9,10 @@
         entry
     } only %}
 
-    {# Render featured image, if present in the entry's field layout #}
-    {% if entry.featuredImage %}
+    {# Render featured image, if present in the entry's field layout, or provided as param #}
+    {% if featuredImage is defined or entry.featuredImage %}
         {% include '_partials/featured-image.twig' with {
-            image: entry.featuredImage.one
+            image: featuredImage ?? entry.featuredImage.one
         } only %}
     {% endif %}
 

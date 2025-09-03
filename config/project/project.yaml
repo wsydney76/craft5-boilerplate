@@ -1,4 +1,4 @@
-dateModified: 1751396996
+dateModified: 1756887277
 elementSources:
   craft\elements\Asset:
     -
@@ -57,6 +57,7 @@ elementSources:
       type: custom
     -
       heading: Content
+      key: 'heading:d1504368-0f72-42e5-9796-4fe795b08b4d'
       type: heading
     -
       defaultSort:
@@ -82,6 +83,7 @@ elementSources:
               - 5fbcee21-14a3-45c8-8fbe-7cacd4c0d6fd # Article listing
               - fc2bf718-1690-4182-88ae-da41b61cceb6 # Home
               - a43152f2-a4cc-4557-870d-9b51dac64371 # Search
+              - 79abbe67-f6e8-4879-bbfa-02031a777b2a # Topic Listing
         elementType: craft\elements\Entry
         fieldContext: global
       defaultSort:
@@ -106,6 +108,19 @@ elementSources:
         - status
         - 'field:c6add583-fe6f-45b1-8bd6-f8c643492713' # Teaser
         - drafts
+        - postDate
+        - link
+      type: native
+    -
+      defaultSort:
+        - structure
+        - asc
+      defaultViewMode: ''
+      disabled: false
+      key: 'section:447b07e5-b596-476e-80b9-45277b552955' # Topic
+      tableAttributes:
+        - status
+        - 'field:c6add583-fe6f-45b1-8bd6-f8c643492713' # Teaser
         - postDate
         - link
       type: native
@@ -145,6 +160,8 @@ meta:
     42fd461d-399b-49e7-82b0-cbd90b09ea5c: 'Site settings' # Site settings
     68da2dbd-7c2f-419d-ba37-ddcddc6294b2: Images # Images
     73ba057e-982c-4227-b5e1-a8b512bb0b1d: Entries # Entries
+    79abbe67-f6e8-4879-bbfa-02031a777b2a: 'Topic Listing' # Topic Listing
+    447b07e5-b596-476e-80b9-45277b552955: Topic # Topic
     569d97bb-e954-4391-8885-c8350b27d0b8: 'Title Only' # Title Only
     982b0231-4baf-4422-b094-3d551c814f69: Deutsch # Deutsch
     4040c097-c708-4f73-af92-e192d64c7de7: 'Block Width' # Block Width
@@ -161,7 +178,9 @@ meta:
     c2a5ed83-026a-480c-989c-ef51a4e46616: 'Quote Style' # Quote Style
     c6add583-fe6f-45b1-8bd6-f8c643492713: Teaser # Teaser
     c6f73e0c-9738-4914-8340-19eb815bf411: Toggle # Toggle
+    ca9b7602-7525-402c-8b16-05edf6c76db5: Topic # Topic
     d3e6c245-4b55-490b-866c-2791cec4870a: Image # Image
+    d340a302-6358-46c5-b354-a0a2909978fa: Topics # Topics
     f9ab1fa9-b717-4a2f-9d7e-28c0c50d32f8: 'Single Line Text' # Single Line Text
     fc2bf718-1690-4182-88ae-da41b61cceb6: Home # Home
 plugins:

@@ -14,6 +14,12 @@
 
     {# The default block content from the extended template #}
     {{ parent() }}
+
+    {% include '_partials/links.twig' with {
+        heading: '{count,plural,=1{Topic} other{Topics}}',
+    	query: entry.topics
+    } only %}
+
 {% endblock %}
 
 {# Previous/Next article with default condition (section by postDate desc) #}

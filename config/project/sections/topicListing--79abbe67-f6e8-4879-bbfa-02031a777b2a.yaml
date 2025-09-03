@@ -1,0 +1,34 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    name: 'Topic Listing'
+    uid: 1c313aeb-8726-40d7-8740-dab29921fc5f # Listing
+handle: topicListing
+maxAuthors: 1
+name: 'Topic Listing'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primäre Eintrag Seite'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  982b0231-4baf-4422-b094-3d551c814f69: # Deutsch
+    enabledByDefault: true
+    hasUrls: true
+    template: _entries/topic/topicListing.twig
+    uriFormat: themen
+  a4f2973e-4934-46f7-af6d-b72af78abade: # English
+    enabledByDefault: true
+    hasUrls: true
+    template: _entries/topic/topicListing.twig
+    uriFormat: topics
+type: single
