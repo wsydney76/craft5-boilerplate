@@ -95,6 +95,15 @@ class DefaultController extends Controller
         $entry->title = 'Artikel';
         Craft::$app->getElements()->saveElement($entry);
 
+        $entry = Entry::find()->section('topicListing')->site('en')->one();
+        $entry->title = 'Topics';
+        $entry->featuredImage = [$this->getRandomImageId()];
+        Craft::$app->getElements()->saveElement($entry);
+
+        $entry = Entry::find()->section('topicListing')->site('de')->one();
+        $entry->title = 'Themen';
+        Craft::$app->getElements()->saveElement($entry);
+
         $entry = Entry::find()->section('search')->site('en')->one();
         $entry->title = 'Search';
         Craft::$app->getElements()->saveElement($entry);
