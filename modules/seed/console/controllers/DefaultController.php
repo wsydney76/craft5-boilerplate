@@ -161,7 +161,6 @@ class DefaultController extends Controller
             $entry->postDate = $this->faker->dateTimeInInterval('-2 days', '-3 months');
             $entry->setFieldValue('teaser', $this->faker->text(40));
             $entry->setFieldValue('featuredImage', [$this->getRandomImageId()]);
-            $entry->setFieldValue('topics', [$this->getRandomTopicId()]);
 
             if (!Craft::$app->elements->saveElement($entry)) {
                 $this->stderr("Error saving entry: " . print_r($entry->getErrors(), true));
@@ -222,6 +221,7 @@ class DefaultController extends Controller
             $entry->postDate = $this->faker->dateTimeInInterval('-2 days', '-3 months');
             $entry->setFieldValue('teaser', $this->faker->text(40));
             $entry->setFieldValue('featuredImage', [$this->getRandomImageId()]);
+            $entry->setFieldValue('topics', [$this->getRandomTopicId()]);
             $entry->setFieldValue('bodyContent', [
                 'sortOrder' => ['new1', 'new2', 'new3', 'new4', 'new5'],
                 'blocks' => [
