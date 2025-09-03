@@ -2,6 +2,7 @@
 
 return [
     'Add topic' => 'Thema hinzufügen',
+    'and' => 'und',
     'Article listing page' => 'Artikel-Übersichtsseite',
     'Article listing' => 'Artikelliste',
     'Article page' => 'Artikel-Seite',
