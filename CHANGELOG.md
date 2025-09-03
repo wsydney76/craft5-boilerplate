@@ -1,7 +1,8 @@
 # Changelog
 
-## Unreleased
+## 2.0.0 2025-09-03
 
+* Added Topics section.
 * Updated Craft CMS to 5.8
 * Updated Tailwind CSS to 4.1.10.
 * Cleanup install script
