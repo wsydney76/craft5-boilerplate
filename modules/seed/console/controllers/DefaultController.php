@@ -108,6 +108,7 @@ class DefaultController extends Controller
         $entry->defaultFeaturedImage = [$this->getRandomImageId()];
         $entry->primaryNavigation = [
             Entry::find()->section('articleListing')->one()->id,
+            Entry::find()->section('topicListing')->one()->id,
             Entry::find()->section('search')->one()->id,
         ];
         $entry->copyright = 'The Demo Inc.';
