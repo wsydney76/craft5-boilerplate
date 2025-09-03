@@ -24,7 +24,7 @@ return [
     /**
      * @var string The public URL to the dev server (what appears in `<script src="">` tags
      */
-    'devServerPublic' => Craft::getAlias('@weburl') . ':5173',
+    'devServerPublic' => App::env('PRIMARY_SITE_URL') . ':5173',
 
     /**
      * @var string|array The JavaScript entry from the manifest.json to inject on Twig error pages
@@ -35,12 +35,12 @@ return [
     /**
      * @var string File system path (or URL) to the Vite-built manifest.json
      */
-    'manifestPath' => Craft::getAlias('@webroot') . '/dist/assets/.vite/manifest.json',
+    'manifestPath' => App::env('CRAFT_WEB_ROOT') . '/dist/assets/.vite/manifest.json',
 
     /**
      * @var string The public URL to use when not using the dev server
      */
-    'serverPublic' => Craft::getAlias('@weburl')  . '/dist/assets/',
+    'serverPublic' => App::env('PRIMARY_SITE_URL')  . '/dist/assets/',
 
     /**
      * @var bool Should the dev server be used?

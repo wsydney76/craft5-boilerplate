@@ -27,17 +27,6 @@ return GeneralConfig::create()
     // Prevent user enumeration attacks
     ->preventUserEnumeration()
 
-    // ---------- Aliases --------------------------------
-
-    ->aliases([
-        // Set the @weburl alias
-        // Use for web base URL, e.g. for asset URLs
-        '@weburl' => App::env('PRIMARY_SITE_URL'),
-        // Set the @webroot alias so the clear-caches command knows where to find CP resources
-        // Use for file system base path
-        '@webroot' => App::env('CRAFT_WEB_ROOT'),
-    ])
-
     // ---------- Environment specific settings ----------
 
     ->devMode($isDev)
@@ -58,7 +47,7 @@ return GeneralConfig::create()
     // Do not serve transformed images with lower quality
     ->optimizeImageFilesize(false)
     // Store CP resources in a git ignored directory, which may be safely deleted
-    ->resourceBasePath('@webroot/dist/cpresources')
-    ->resourceBaseUrl('@weburl/dist/cpresources')
+    ->resourceBasePath( App::env('CRAFT_WEB_ROOT') . '/dist/cpresources')
+    ->resourceBaseUrl(App::env('PRIMARY_SITE_URL') . '/dist/cpresources')
     // Append a version hash to asset URLs
     ->revAssetUrls();
