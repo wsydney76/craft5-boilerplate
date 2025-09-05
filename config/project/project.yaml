@@ -1,4 +1,4 @@
-dateModified: 1756888889
+dateModified: 1757079741
 elementSources:
   craft\elements\Asset:
     -
@@ -125,13 +125,17 @@ elementSources:
         - link
       type: native
 email:
-  fromEmail: admin@example.com
-  fromName: 'Craft CMS'
+  fromEmail: $SYSTEM_EMAIL_ADDRESS
+  fromName: $SYSTEM_EMAIL_ADDRESS
   replyToEmail: null
   template: null
   transportSettings:
-    command: '/usr/local/bin/mailpit sendmail -t --smtp-addr 127.0.0.1:1025'
-  transportType: craft\mail\transportadapters\Sendmail
+    host: $SMTP_HOSTNAME
+    password: ''
+    port: $SMTP_PORT
+    useAuthentication: $SMTP_USE_AUTH
+    username: ''
+  transportType: craft\mail\transportadapters\Smtp
 fs:
   localFilesFs:
     hasUrls: true
