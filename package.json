@@ -14,7 +14,8 @@
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.10",
-    "vite-plugin-compression": "^0.5.1"
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-restart": "^1.0.0"
   },
   "dependencies": {
     "@alpinejs/focus": "^3.14.9",

@@ -5,7 +5,7 @@
         <div class="flex  border border-slate-300 shadow-md">
             {% set latestArticle = craft.entries.section('article').topics(entry).one %}
             {% set featuredImage = latestArticle.featuredImage.one ?? entry.featuredImage.eagerly().one ?? siteSettings.defaultFeaturedImage.one  %}
-            <div>
+            <div class="shrink-0">
                 {% if featuredImage %}
                     <a href="{{ entry.url }}">
                         {% include '_partials/img.twig' with {

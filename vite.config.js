@@ -1,6 +1,7 @@
 import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
 import viteCompression from 'vite-plugin-compression';
+import ViteRestart from 'vite-plugin-restart';
 
 // https://vitejs.dev/config/
 /**
@@ -10,6 +11,11 @@ export default ({command}) => {
     return {
         plugins: [
             tailwindcss(),
+            ViteRestart({
+                reload: [
+                    './templates/**/*',
+                ],
+            }),
             viteCompression({
                 filter: /\.(js|mjs|json|css|map)$/i,
             })
