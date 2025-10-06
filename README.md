@@ -112,6 +112,13 @@ This does nothing out of the box, until
 * You configure your IDE to use it. See [docs for PhpStorm](https://www.jetbrains.com/help/phpstorm/prettier.html#ws_prettier_configure).
 * You run `ddev npm run prettier-templates` or `ddev npm run prettier-modules` to format files in `templates` or `modules` directory.
 
+While you like or (more likely) dislike the opinionated formatting of prettier, the main reason it is included here is that (to our knowledge) is the only way to order tailwind classes automatically.
+
+### Used packages
+
+* [Tailwind CSS Prettier Plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
+* [Twig Prettier Plugin](https://github.com/zackad/prettier-plugin-twig)
+
 ## Matrix vs CKEditor
 
 We use a simple matrix field for content instead of CKEditor. 
