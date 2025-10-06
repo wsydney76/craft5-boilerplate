@@ -39,7 +39,6 @@ class FauxTwigExtension extends AbstractExtension implements GlobalsInterface
     public function getGlobals(): array
     {
         return [
-
             // Inserted by Craft CMS
             'entry' => new Entry(),
             'asset' => new Asset(),
@@ -60,8 +59,6 @@ class FauxTwigExtension extends AbstractExtension implements GlobalsInterface
 
             // Preloaded singles
             'siteSettings' => new Entry(),
-
-
         ];
     }
 }

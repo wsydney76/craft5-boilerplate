@@ -43,7 +43,6 @@ class DefaultController extends Controller
         return parent::beforeAction($action);
     }
 
-
     public function actionIndex()
     {
         if (!$this->hasImages()) {
@@ -71,11 +70,14 @@ class DefaultController extends Controller
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        if ($this->interactive && !$this->confirm("Set default content for single entries?", true)) {
+        if (
+            $this->interactive &&
+            !$this->confirm('Set default content for single entries?', true)
+        ) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        $this->stdout("Setting default content" . PHP_EOL);
+        $this->stdout('Setting default content' . PHP_EOL);
 
         $entry = Entry::find()->section('home')->site('en')->one();
         $entry->title = 'Craft Boilerplate';
@@ -127,10 +129,9 @@ class DefaultController extends Controller
         $entry->siteName = 'Craft Boilerplate';
         Craft::$app->getElements()->saveElement($entry);
 
-        $this->stdout("Default content set" . PHP_EOL);
+        $this->stdout('Default content set' . PHP_EOL);
         return ExitCode::OK;
     }
-
 
     public function actionCreateTopics(int $num = self::NUM_TOPICS): int
     {
@@ -140,17 +141,23 @@ class DefaultController extends Controller
 
         $section = Craft::$app->entries->getSectionByHandle(self::TOPIC_SECTION_HANDLE);
         if (!$section) {
-            $this->stderr("Invalid section") . PHP_EOL;
+            $this->stderr('Invalid section') . PHP_EOL;
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
         $type = Craft::$app->entries->getEntryTypeByHandle(self::TOPIC_TYPE_HANDLE);
         if (!$type) {
-            $this->stderr("Invalid entry type") . PHP_EOL;
+            $this->stderr('Invalid entry type') . PHP_EOL;
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        if ($this->interactive && !$this->confirm("Create {$num} entries of type '{$section->name}'? Make sure a number of images exist!", true)) {
+        if (
+            $this->interactive &&
+            !$this->confirm(
+                "Create {$num} entries of type '{$section->name}'? Make sure a number of images exist!",
+                true,
+            )
+        ) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
@@ -167,13 +174,13 @@ class DefaultController extends Controller
             $entry->typeId = $type->id;
             $entry->authorId = $user->id;
             // Don't let a title end with a dot
-            $entry->title = rtrim($title, '.');;
+            $entry->title = rtrim($title, '.');
             $entry->postDate = $this->faker->dateTimeInInterval('-2 days', '-3 months');
             $entry->setFieldValue('teaser', $this->faker->text(40));
             $entry->setFieldValue('featuredImage', [$this->getRandomImageId()]);
 
             if (!Craft::$app->elements->saveElement($entry)) {
-                $this->stderr("Error saving entry: " . print_r($entry->getErrors(), true));
+                $this->stderr('Error saving entry: ' . print_r($entry->getErrors(), true));
                 return ExitCode::UNSPECIFIED_ERROR;
             }
 
@@ -200,17 +207,23 @@ class DefaultController extends Controller
 
         $section = Craft::$app->entries->getSectionByHandle(self::ARTICLE_SECTION_HANDLE);
         if (!$section) {
-            $this->stderr("Invalid section") . PHP_EOL;
+            $this->stderr('Invalid section') . PHP_EOL;
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
         $type = Craft::$app->entries->getEntryTypeByHandle(self::ARTICLE_TYPE_HANDLE);
         if (!$type) {
-            $this->stderr("Invalid entry type") . PHP_EOL;
+            $this->stderr('Invalid entry type') . PHP_EOL;
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        if ($this->interactive && !$this->confirm("Create {$num} entries of type '{$section->name}'? Make sure a number of images exist!", true)) {
+        if (
+            $this->interactive &&
+            !$this->confirm(
+                "Create {$num} entries of type '{$section->name}'? Make sure a number of images exist!",
+                true,
+            )
+        ) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
@@ -227,7 +240,7 @@ class DefaultController extends Controller
             $entry->typeId = $type->id;
             $entry->authorId = $user->id;
             // Don't let a title end with a dot
-            $entry->title = rtrim($title, '.');;
+            $entry->title = rtrim($title, '.');
             $entry->postDate = $this->faker->dateTimeInInterval('-2 days', '-3 months');
             $entry->setFieldValue('teaser', $this->faker->text(40));
             $entry->setFieldValue('featuredImage', [$this->getRandomImageId()]);
@@ -260,7 +273,13 @@ class DefaultController extends Controller
                             'image' => [$this->getRandomImageId()],
                             'caption' => $this->faker->text(50),
                             // Set a random image width
-                            'blockWidth' => $this->faker->randomElement(['default', 'slim', 'wide', 'max', 'full']),
+                            'blockWidth' => $this->faker->randomElement([
+                                'default',
+                                'slim',
+                                'wide',
+                                'max',
+                                'full',
+                            ]),
                         ],
                     ],
                     'new5' => [
@@ -269,11 +288,11 @@ class DefaultController extends Controller
                             'text' => $this->faker->text(500),
                         ],
                     ],
-                ]
+                ],
             ]);
 
             if (!Craft::$app->elements->saveElement($entry)) {
-                $this->stderr("Error saving entry: " . print_r($entry->getErrors(), true));
+                $this->stderr('Error saving entry: ' . print_r($entry->getErrors(), true));
                 return ExitCode::UNSPECIFIED_ERROR;
             }
 
@@ -296,7 +315,7 @@ class DefaultController extends Controller
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        if ($this->interactive && !$this->confirm("Set provisional alt text for images?", true)) {
+        if ($this->interactive && !$this->confirm('Set provisional alt text for images?', true)) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
@@ -317,8 +336,13 @@ class DefaultController extends Controller
      */
     public function actionCreateTransforms(): int
     {
-
-        if ($this->interactive && !$this->confirm("Retrieve all entries? This will create missing image transforms.", true)) {
+        if (
+            $this->interactive &&
+            !$this->confirm(
+                'Retrieve all entries? This will create missing image transforms.',
+                true,
+            )
+        ) {
             return ExitCode::UNSPECIFIED_ERROR;
         }
 
@@ -378,7 +402,7 @@ class DefaultController extends Controller
 
         $query = Asset::find()->kind('image')->width('> 1000');
 
-        if ($query->count()< $num) {
+        if ($query->count() < $num) {
             $this->stdout("Could not find $num images." . PHP_EOL);
             return false;
         }
@@ -397,15 +421,11 @@ class DefaultController extends Controller
     public function actionAddCopyrightToSeedImages(): void
     {
         $this->stdout('Adding copyright to seed images...');
-        $seedImages = Asset::find()
-            ->folderPath('seed/')
-            ->copyright(':empty:')
-            ->all();
+        $seedImages = Asset::find()->folderPath('seed/')->copyright(':empty:')->all();
         foreach ($seedImages as $seedImage) {
             $seedImage->copyright = self::SEED_IMAGES_COPYRIGHT;
             Craft::$app->getElements()->saveElement($seedImage);
         }
         $this->stdout('Done' . PHP_EOL);
     }
-
 }

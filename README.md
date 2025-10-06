@@ -110,7 +110,7 @@ Added prettier config for formatting code including `.twig` files.
 This does nothing out of the box, until
 
 * You configure your IDE to use it. See [docs for PhpStorm](https://www.jetbrains.com/help/phpstorm/prettier.html#ws_prettier_configure).
-* You run `ddev npm run prettier` to format all files.
+* You run `ddev npm run prettier-templates` or `ddev npm run prettier-modules` to format files in `templates` or `modules` directory.
 
 ## Matrix vs CKEditor
 

@@ -20,5 +20,4 @@ class SeedModule extends BaseModule
         // This module is only for console commands, so we can keep it simple
         $this->controllerNamespace = 'modules\\seed\\console\\controllers';
     }
-
 }

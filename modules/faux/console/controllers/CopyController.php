@@ -13,7 +13,6 @@ class CopyController extends Controller
 {
     public $defaultAction = 'index';
 
-
     /**
      * faux/copy command
      *
@@ -27,7 +26,6 @@ class CopyController extends Controller
      */
     public function actionIndex(): int
     {
-
         $this->stdout("Starting faux sync...\n");
         $exit = ExitCode::OK;
         try {
@@ -36,13 +34,17 @@ class CopyController extends Controller
                 throw new \RuntimeException("Missing directory: $fauxDir");
             }
 
-            $compiledDir = Craft::$app->getPath()->getRuntimePath() . DIRECTORY_SEPARATOR . 'compiled_classes';
+            $compiledDir =
+                Craft::$app->getPath()->getRuntimePath() . DIRECTORY_SEPARATOR . 'compiled_classes';
             if (!is_dir($compiledDir)) {
                 throw new \RuntimeException("Missing directory: $compiledDir");
             }
 
             // Delete existing CustomFieldBehavior* files in _faux
-            foreach (glob($fauxDir . DIRECTORY_SEPARATOR . 'CustomFieldBehavior*') ?: [] as $oldFile) {
+            foreach (
+                glob($fauxDir . DIRECTORY_SEPARATOR . 'CustomFieldBehavior*') ?: []
+                as $oldFile
+            ) {
                 if (is_file($oldFile) && @unlink($oldFile)) {
                     $this->stdout('Deleted: ' . basename($oldFile) . "\n");
                 }
