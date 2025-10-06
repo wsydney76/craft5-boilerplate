@@ -8,12 +8,17 @@
   "license": "Unlicense",
   "scripts": {
     "dev": "NODE_ENV=dev vite",
-    "build": "NODE_ENV=production vite build --mode production"
+    "build": "NODE_ENV=production vite build --mode production",
+    "prettier": "npx prettier --write templates/**/*.twig"
   },
   "devDependencies": {
+    "@prettier/plugin-php": "^0.24.0",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.10",
+    "@zackad/prettier-plugin-twig": "^0.16.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-restart": "^1.0.0"
   },

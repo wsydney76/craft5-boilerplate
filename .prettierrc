@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "@prettier/plugin-php",
+    "@zackad/prettier-plugin-twig",
+    "prettier-plugin-tailwindcss"
+  ],
+  "singleQuote": true,
+  "tabWidth": 4,
+  "printWidth": 120,
+  "semi": true,
+  "trailingComma": "es5",
+  "twigOutputEndblockName": true,
+  "twigMultiTags": [
+    "nav,endnav",
+    "switch,case,default,endswitch",
+    "ifchildren,endifchildren",
+    "cache,endcache"
+  ]
+}
