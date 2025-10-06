@@ -21,10 +21,14 @@
  */
 
 use craft\helpers\App;
+use modules\faux\FauxModule;
 use modules\seed\SeedModule;
 
 return [
     'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
-    'modules' => ['seed' => SeedModule::class],
+    'modules' => [
+        'seed' => SeedModule::class,
+        'faux' => FauxModule::class,
+    ],
     'bootstrap' => [],
 ];

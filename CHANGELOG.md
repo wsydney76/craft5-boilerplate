@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+* Updated `faux` module for autocompletion of custom fields in Twig templates. See [Faux README](modules/faux/README.md) for details.
+* Added prettier configuration including `.twig` files.
+
 ## 2.0.0 2025-09-03
 
 * Added Topics section.

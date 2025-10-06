@@ -20,7 +20,7 @@
  * @copyright Copyright (c) 2019 nystudio107
  */
 
-namespace modules\_faux;
+namespace modules\faux;
 
 use craft\elements\Asset;
 use craft\elements\Entry;

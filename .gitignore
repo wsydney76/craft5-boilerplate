@@ -8,3 +8,4 @@
 /templates/test
 /web/dist
 .ddev/.env.web
+/modules/faux/CustomFieldBehavior_*
