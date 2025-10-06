@@ -2,8 +2,9 @@
 {# @param entry Entry #}
 
 {# Use Alpine component for handling the mobile menu #}
-<nav class="flex items-center justify-between pb-6 px-4"
-     x-data="{
+<nav
+    class="flex items-center justify-between px-4 pb-6"
+    x-data="{
         // the reactive property that controls the opened/closed state of the nav panel
         open: false,
 
@@ -25,10 +26,10 @@
             this.$refs.openBtn.focus()
             this.$nextTick(() => { this.$refs.openBtn.focus() });
         }
-     }">
-
+     }"
+>
     {# The site name #}
-    <a class=" text-2xl font-bold" href="{{ siteUrl('/') }}">{{ siteSettings.siteName }}</a>
+    <a class="text-2xl font-bold" href="{{ siteUrl('/') }}">{{ siteSettings.siteName }}</a>
 
     {# Get entries for primary navigation. Top level only for now #}
     {% set navEntries = siteSettings.primaryNavigation.collect %}
@@ -38,16 +39,13 @@
 
     {# show nav if there is something to show... #}
     {% if navEntries.count or localizedEntries.count %}
-
         {# wide screens #}
         {% include '_layouts/partials/nav-desktop.twig' with {
-            navEntries, localizedEntries
+            navEntries,
+            localizedEntries
         } only %}
 
         {# narrow screens #}
-        {% include '_layouts/partials/nav-mobile.twig' with {
-            navEntries, localizedEntries
-        } only %}
-
+        {% include '_layouts/partials/nav-mobile.twig' with { navEntries, localizedEntries } only %}
     {% endif %}
 </nav>

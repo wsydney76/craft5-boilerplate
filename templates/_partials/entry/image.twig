@@ -2,7 +2,7 @@
 
 {# Get image. Will be null if no image is present. #}
 
-{# Check if eager loading makes sense here  #}
+{# Check if eager loading makes sense here #}
 {# .eagerly(), withTransforms(), see https://craftcms.com/docs/5.x/development/eager-loading.html #}
 
 {# In most cases we will only have a few image blocks per page,
@@ -13,16 +13,15 @@ Only measuring with real life data will tell.
 {% set width = entry.blockWidth.value ?? 'default' %}
 {% set fullHeight = entry.fullHeight %}
 
-
 {# Lookup tables for different image styles #}
 
 {# The transform to apply #}
 {% set transforms = {
-    default: {width: 768, height: fullHeight ? null : 432},
-    slim: {width: 600, height: fullHeight ? null : 338},
-    wide: {width: 1024, height: fullHeight ? null : 576},
-    max: {width: 1200, height: fullHeight ? null : 675},
-    full: {width: 2000, height: fullHeight ? null : 440}
+    default: { width: 768, height: fullHeight ? null : 432 },
+    slim: { width: 600, height: fullHeight ? null : 338 },
+    wide: { width: 1024, height: fullHeight ? null : 576 },
+    max: { width: 1200, height: fullHeight ? null : 675 },
+    full: { width: 2000, height: fullHeight ? null : 440 }
 } %}
 
 {# The srcsets to apply. TODO: check values #}
@@ -52,14 +51,14 @@ Only measuring with real life data will tell.
         {# Always use a macro or an include to render images,
         there are too many possible options to take into account on every single usage. #}
         {% include '_partials/img.twig' with {
-        	image,
+            image,
             transform: transforms[width],
             srcset: srcsets[width]
         } only %}
 
         {# Caption #}
         {% if entry.caption or image.copyright %}
-            <figcaption class="max-w-(--breakpoint-lg) mx-auto flex justify-between">
+            <figcaption class="mx-auto flex max-w-(--breakpoint-lg) justify-between">
                 <div>
                     {{ entry.caption }}
                 </div>

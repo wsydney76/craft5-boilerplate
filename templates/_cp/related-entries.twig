@@ -6,40 +6,52 @@
 
 <div>
     {# Get anything regardless of status/draft/site/whatever #}
-    {% set entries = craft.entries
-        .relatedTo([
-            'or',
-            {targetElement: element, field: 'featuredImage'},
-            {targetElement: element, field: 'bodyContent.image'}
-        ])
-        .status(null)
-        .drafts(null)
-        .provisionalDrafts(null)
-        .site('*')
-        .unique()
-        .preferSites([element.site.handle])
-    .collect %}
+    {% set entries =
+        craft.entries.relatedTo(
+            [
+                'or',
+                { targetElement: element, field: 'featuredImage' },
+                { targetElement: element, field: 'bodyContent.image' }
+            ]
+        ).status(
+            null
+        ).drafts(
+            null
+        ).provisionalDrafts(
+            null
+        ).site(
+            '*'
+        ).unique().preferSites(
+            [element.site.handle]
+        ).collect
+    %}
 
-    <h2>{{ 'Incoming {count,plural,=1{Relationship} other{Relationships}}'|t({count: entries.count}) }}</h2>
+    <h2>
+        {{
+            'Incoming {count,plural,=1{Relationship} other{Relationships}}'|t({
+                count: entries.count
+            })
+        }}
+    </h2>
 
     {% if entries.count %}
-        <table class="table data fullwidth">
+        <table class="data fullwidth table">
             <thead>
-            <tr>
-                <th>{{ 'Title'|t('app') }}</th>
-                <th>{{ 'Section/Type' }}</th>
-                <th>{{ 'Draft'|t('app') }}?</th>
-            </tr>
+                <tr>
+                    <th>{{ 'Title'|t('app') }}</th>
+                    <th>{{ 'Section/Type' }}</th>
+                    <th>{{ 'Draft'|t('app') }}?</th>
+                </tr>
             </thead>
             {% for entry in entries %}
                 <tr>
                     <td>
                         <span class="status {{ entry.status }}"></span>
-                        <a href="{{ entry.cpEditUrl }}">{{ entry.title ?? "Entry #{entry.id} (#{entry.type.name})" }}</a>
+                        <a href="{{ entry.cpEditUrl }}">
+                            {{ entry.title ?? ("Entry #{entry.id} (#{entry.type.name})") }}
+                        </a>
                     </td>
-                    <td>
-                        {{ (entry.section.name ?? entry.type.name)|t }}
-                    </td>
+                    <td>{{ (entry.section.name ?? entry.type.name)|t }}</td>
                     <td>
                         {% if entry.isProvisionalDraft %}
                             {{ 'Provisional Draft'|t }}
@@ -48,7 +60,6 @@
                         {% endif %}
                     </td>
                 </tr>
-
             {% endfor %}
         </table>
     {% else %}
@@ -56,6 +67,4 @@
             {{ 'No entries found.'|t }}
         </p>
     {% endif %}
-
-
 </div>

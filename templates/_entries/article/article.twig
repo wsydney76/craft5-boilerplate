@@ -4,27 +4,22 @@
 {# where sectiongroup bundles all sections that logically belong together #}
 
 {# The main layout template will handle common content in a consistent way #}
-{% extends "_layouts/main.twig" %}
+{% extends '_layouts/main.twig' %}
 
 {% block proseContent %}
     {# Section specific content #}
-    {% include '_entries/article/partials/meta.twig' with {
-    	entry
-    } only %}
+    {% include '_entries/article/partials/meta.twig' with { entry } only %}
 
     {# The default block content from the extended template #}
     {{ parent() }}
 
     {% include '_partials/links.twig' with {
         heading: '{count,plural,=1{Topic} other{Topics}}',
-    	query: entry.topics
+        query: entry.topics
     } only %}
-
-{% endblock %}
+{% endblock proseContent %}
 
 {# Previous/Next article with default condition (section by postDate desc) #}
 {% block afterContent %}
-    {% include '_layouts/partials/prevnext.twig' with {
-        entry
-    } only %}
-{% endblock %}
+    {% include '_layouts/partials/prevnext.twig' with { entry } only %}
+{% endblock afterContent %}

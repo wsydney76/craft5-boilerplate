@@ -2,6 +2,10 @@
 
 {# Grid layout depending on screen width #}
 {# max-w-... center cards if there is only one column #}
-<div class="grid grid-cols-1 max-w-[450px] mx-auto gap-4 md:max-w-none md:mx-0 md:grid-cols-2 lg:grid-cols-3">
-    {% block cards %}{% endblock %}
+<div
+    class="mx-auto grid max-w-[450px] grid-cols-1 gap-4 md:mx-0 md:max-w-none md:grid-cols-2 lg:grid-cols-3"
+>
+    {% block cards %}
+
+    {% endblock cards %}
 </div>

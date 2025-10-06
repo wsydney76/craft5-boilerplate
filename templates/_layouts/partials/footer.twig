@@ -1,7 +1,9 @@
 {# The footer section #}
 {# @param entry Entry #}
 
-<footer class="mt-8 border-t border-gray-500 max-w-(--breakpoint-lg) mx-auto py-6 px-4 flex justify-between">
+<footer
+    class="mx-auto mt-8 flex max-w-(--breakpoint-lg) justify-between border-t border-gray-500 px-4 py-6"
+>
     <div>
         &copy; {{ now|date('Y') }} {{ siteSettings.copyright }}
     </div>

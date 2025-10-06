@@ -1,6 +1,6 @@
 {# @param entry Entry injected by Craft routing #}
 
-{% extends "_layouts/main.twig" %}
+{% extends '_layouts/main.twig' %}
 
 {# Request wide layout #}
 {% set layoutMaxWidth = 'lg' %}
@@ -12,39 +12,42 @@
     {# The search form #}
     {# mobile (< md): stack vertically, with a bit of y margins #}
     {# desktop (> md): show horizontally, with a bit of x margins #}
-    <form class="border border-brand-300 shadow-md bg-white p-4 space-y-4 md:space-y-0 md:flex md:space-x-4 md:items-center">
-
-        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 whitespace-nowrap" for="search-query">
+    <form
+        class="border-brand-300 space-y-4 border bg-white p-4 shadow-md md:flex md:items-center md:space-y-0 md:space-x-4"
+    >
+        <label
+            class="mb-1 block font-bold whitespace-nowrap text-gray-500 md:mb-0 md:text-right"
+            for="search-query"
+        >
             {{ 'Search for:'|t }}
         </label>
 
         {# Input is styled by Tailwind forms plugin #}
-        <input type="search"
-               id="search-query"
-               autofocus
-               class="w-full"
-               name="q"
-               value="{{ searchQuery }}">
+        <input
+            type="search"
+            id="search-query"
+            autofocus
+            class="w-full"
+            name="q"
+            value="{{ searchQuery }}"
+        />
 
-        {% include '_partials/submitButton.twig' with {
-            caption: 'Start'|t,
-        } only %}
+        {% include '_partials/submitButton.twig' with { caption: 'Start'|t } only %}
     </form>
 
     {% if searchQuery %}
-
         {# The search query #}
-        {% set query = craft.entries()
-            .section('article')
-            .search(searchQuery)
-            .orderBy('score') %}
+        {% set query = craft.entries().section('article').search(searchQuery).orderBy('score') %}
 
         {# This is actually a duplicate query, as we need the count beforehand. #}
         {% set count = query.count %}
 
         {% if count %}
             {# Use a singular/plural aware translation rule #}
-            <h2 class="mt-8 text-xl">{{ count }} {{ '{count,plural,=1{search result} other{search results}}'|t({count: count}) }}</h2>
+            <h2 class="mt-8 text-xl">
+                {{ count }}
+                {{ '{count,plural,=1{search result} other{search results}}'|t({ count: count }) }}
+            </h2>
 
             {# Reuse the cards layout from article listing #}
             {% include '_entries/article/partials/article-cards.twig' with {
@@ -53,8 +56,13 @@
             } only %}
         {% else %}
             <div class="mt-4">
-                {{ 'Your search for "{q}" didn’t return any results.'|t({q: searchQuery, count: count}) }}
+                {{
+                    'Your search for "{q}" didn’t return any results.'|t({
+                        q: searchQuery,
+                        count: count
+                    })
+                }}
             </div>
         {% endif %}
     {% endif %}
-{% endblock %}
+{% endblock content %}

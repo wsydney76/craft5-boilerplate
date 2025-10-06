@@ -3,7 +3,7 @@
 {# @param caption string The button text #}
 
 {# Set a default if no caption is provided #}
-{% set caption = caption ?? 'Submit'|t %}
+{% set caption = caption ?? ('Submit'|t) %}
 
 {#
 You may think of using Tailwind's @apply statement here, as buttons typically have a ton of classes
@@ -13,8 +13,9 @@ We would recommend to avoid it and build properly designed components.
 {# The question whether cursor-pointer should be used on a button,
 got decided by a game of rock, paper, scissors. Best of five. #}
 
-<button class="block cursor-pointer border border-gray-300 rounded-sm shadow-md bg-slate-700 text-white  transition-colors px-3 py-1.5 hover:bg-slate-900 focus:bg-slate-900"
-        type="submit">
+<button
+    class="block cursor-pointer rounded-sm border border-gray-300 bg-slate-700 px-3 py-1.5 text-white shadow-md transition-colors hover:bg-slate-900 focus:bg-slate-900"
+    type="submit"
+>
     {{ caption }}
 </button>
-

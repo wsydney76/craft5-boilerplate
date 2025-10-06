@@ -3,5 +3,5 @@
     {% block content %}
         {# author.name will the the user name, if no full name is present #}
         {{ 'Created by'|t }} {{ entry.author.name }}, {{ entry.postDate|date('short') }}
-    {% endblock %}
+    {% endblock content %}
 {% endembed %}

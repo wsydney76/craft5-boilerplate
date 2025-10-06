@@ -2,12 +2,9 @@
 {# @param entry Entry #}
 {# @param featuredImage Asset|null #}
 
-<header class="mb-8 max-w-(--breakpoint-lg) mx-auto pt-8">
-
+<header class="mx-auto mb-8 max-w-(--breakpoint-lg) pt-8">
     {# The nav bar #}
-    {% include '_layouts/partials/nav.twig' with {
-        entry
-    } only %}
+    {% include '_layouts/partials/nav.twig' with { entry } only %}
 
     {# Render featured image, if present in the entry's field layout, or provided as param #}
     {% if featuredImage is defined or entry.featuredImage %}
@@ -15,5 +12,4 @@
             image: featuredImage ?? entry.featuredImage.one ?? null
         } only %}
     {% endif %}
-
 </header>

@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "NODE_ENV=dev vite",
     "build": "NODE_ENV=production vite build --mode production",
-    "prettier": "npx prettier --write templates/**/*.twig"
+    "prettier-templates": "npx prettier --write templates/**/*.twig",
+    "prettier-modules": "npx prettier --write templates/**/*.{php,twig}"
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.24.0",

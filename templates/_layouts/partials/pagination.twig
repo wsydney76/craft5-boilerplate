@@ -10,11 +10,9 @@
     {# This is an example of how controlling spacing, alignments etc. can get tricky in a responsive layout... #}
 
     {# Using 3 columns won't work on small screens #}
-    <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose">
-
+    <div class="not-prose mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
         {# Give a little space between the links #}
         <div class="flex space-x-2">
-
             {# Don't show 'first page' link if it would be the same as 'Prev Page' #}
             {% if pageInfo.currentPage > 2 %}
                 <div class="whitespace-nowrap">
@@ -32,11 +30,16 @@
         <div class="sm:flex sm:justify-center">
             {# Use translation with replacements. #}
             {# This is preferred, because different languages can have a different order of words. #}
-            {{ 'Page {current} of {total}'|t({current: pageInfo.currentPage, total: pageInfo.totalPages}) }}
+            {{
+                'Page {current} of {total}'|t({
+                    current: pageInfo.currentPage,
+                    total: pageInfo.totalPages
+                })
+            }}
         </div>
 
         {# Move content to the right on larger screens #}
-        <div class="flex sm:justify-end space-x-2">
+        <div class="flex space-x-2 sm:justify-end">
             {% if pageInfo.nextUrl %}
                 <div class="whitespace-nowrap">
                     <a href="{{ pageInfo.nextUrl }}">{{ 'Next Page'|t }} &rsaquo;</a>
@@ -44,12 +47,11 @@
             {% endif %}
 
             {# Don't show 'last page' link if it would be the same as 'Last Page' #}
-            {% if pageInfo.currentPage < (pageInfo.totalPages - 1) %}
+            {% if pageInfo.currentPage < pageInfo.totalPages - 1 %}
                 <div class="whitespace-nowrap">
                     <a href="{{ pageInfo.lastUrl }}">{{ 'Last Page'|t }}</a> &raquo;
                 </div>
             {% endif %}
         </div>
     </div>
-
 {% endif %}

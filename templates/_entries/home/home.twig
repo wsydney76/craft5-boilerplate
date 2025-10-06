@@ -1,12 +1,10 @@
 {# @param entry Entry injected by Craft routing #}
-{% extends "_layouts/main.twig" %}
+{% extends '_layouts/main.twig' %}
 
 {% block proseContent %}
     {# TODO: Real world homepage content #}
     {% include '_partials/entries-list.twig' with {
-    	heading: 'Newest Articles'|t,
-        query: craft.entries
-            .section('article')
-            .limit(10)
+        heading: 'Newest Articles'|t,
+        query: craft.entries.section('article').limit(10)
     } only %}
-{% endblock %}
+{% endblock proseContent %}

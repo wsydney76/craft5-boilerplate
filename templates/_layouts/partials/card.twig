@@ -10,8 +10,7 @@
 {# The whole card is a link... #}
 {# We need the block class so that <a> does not behave like an inline element and allows borders and shadows #}
 {# Set an arbitrary max width #}
-<a class="max-w-[450px] group block border border-slate-300 shadow-md"
-   href="{{ url }}">
+<a class="group block max-w-[450px] border border-slate-300 shadow-md" href="{{ url }}">
     {% if image %}
         <div class="overflow-hidden">
             {# scale the image if the card is hovered
@@ -19,8 +18,11 @@
             transition-transform duration-400 animates the scaling in 400 milliseconds #}
             {% include '_partials/img.twig' with {
                 image,
-                transform: {width: 450, height: 250},
-                attr: {class: 'group-hover:scale-105 transition-transform duration-400', loading: 'lazy'}
+                transform: { width: 450, height: 250 },
+                attr: {
+                    class: 'group-hover:scale-105 transition-transform duration-400',
+                    loading: 'lazy'
+                }
             } only %}
         </div>
     {% endif %}
@@ -31,6 +33,7 @@
         </div>
         {# Let embedding templates insert specific content #}
         {% block content %}
-        {% endblock %}
+
+        {% endblock content %}
     </div>
 </a>

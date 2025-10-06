@@ -1,9 +1,7 @@
-{% extends "_layouts/main.twig" %}
+{% extends '_layouts/main.twig' %}
 
 {% block content %}
     {% include '_entries/topic/partials/entries-list.twig' with {
-        query: craft.entries
-            .section('topic')
-
+        query: craft.entries.section('topic')
     } only %}
-{% endblock %}
+{% endblock content %}

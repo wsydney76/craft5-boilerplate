@@ -6,7 +6,5 @@
 {# Styling is applied by Tailwind typography plugin #}
 {% set headingLevel = entry.headingLevel.value ?? 'h2' %}
 
-{# Render html element with dynamic tag name  #}
-{{ tag(headingLevel, {
-    text: entry.title
-}) }}
+{# Render html element with dynamic tag name #}
+{{ tag(headingLevel, { text: entry.title }) }}

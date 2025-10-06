@@ -4,13 +4,13 @@
 {# @param condition Array The condition that determines the next/prev entry #}
 {# Default: current section with its default sort order #}
 
-{% set condition = condition ?? {section: entry.section.handle} %}
+{% set condition = condition ?? { section: entry.section.handle } %}
 
 {% set prev = entry.prev(condition) %}
 {% set next = entry.next(condition) %}
 
 {% if prev or next %}
-    <div class="mt-12 max-w-(--breakpoint-lg) mx-auto px-4 flex justify-between">
+    <div class="mx-auto mt-12 flex max-w-(--breakpoint-lg) justify-between px-4">
         <div>
             {% if prev %}
                 &lt; {{ prev.link }}

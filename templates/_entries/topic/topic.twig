@@ -1,4 +1,4 @@
-{% extends "_layouts/main.twig" %}
+{% extends '_layouts/main.twig' %}
 
 {# Make the layout template use the wide layout #}
 {% set layoutMaxWidth = 'lg' %}
@@ -11,8 +11,7 @@
 
 {% block content %}
     {% include '_entries/article/partials/article-cards.twig' with {
-        query: craft.entries
-            .topics(entry),
+        query: craft.entries.topics(entry),
         perPage: 12
     } only %}
-{% endblock %}
+{% endblock content %}

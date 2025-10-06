@@ -14,12 +14,11 @@
 https://craftcms.com/docs/5.x/development/image-transforms.html#defining-transforms-in-your-templates
 #}
 
-
-{% set transform = transform is defined ? transform : {width: 1024} %}
+{% set transform = transform is defined ? transform : { width: 1024 } %}
 
 {# Don't use a srcset by default #}
 {% set srcset = srcset is defined ? srcset : null %}
- 
+
 {# Don't apply 2x srcsize if the image is not wide enough #}
 {% if srcset and '2x' in srcset %}
     {% set transformWidth = transform.width is defined ? transform.width : 1024 %}
@@ -30,11 +29,11 @@ https://craftcms.com/docs/5.x/development/image-transforms.html#defining-transfo
 {% endif %}
 
 {# Lazy load image by default #}
-{% set attr = attr is defined ? attr : {loading: 'lazy'} %}
+{% set attr = attr is defined ? attr : { loading: 'lazy' } %}
 
 {# Use webp format by default #}
 {% if transform.format is not defined %}
-    {% set transform = transform|merge({format: 'webp'}) %}
+    {% set transform = transform|merge({ format: 'webp' }) %}
 {% endif %}
 
 {# Render the image #}

@@ -6,10 +6,11 @@
   ],
   "singleQuote": true,
   "tabWidth": 4,
-  "printWidth": 120,
+  "printWidth": 100,
   "semi": true,
   "trailingComma": "es5",
   "twigOutputEndblockName": true,
+  "twigAlwaysBreakObjects": false,
   "twigMultiTags": [
     "nav,endnav",
     "switch,case,default,endswitch",

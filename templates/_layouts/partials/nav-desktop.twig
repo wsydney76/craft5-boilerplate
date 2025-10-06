@@ -14,8 +14,6 @@
 
     {# Show site name for localized entry versions #}
     {% for localizedEntry in localizedEntries %}
-        <li>
-            <a href="{{ localizedEntry.url }}">{{ localizedEntry.site.name }}</a>
-        </li>
+        <li><a href="{{ localizedEntry.url }}">{{ localizedEntry.site.name }}</a></li>
     {% endfor %}
 </ul>

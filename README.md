@@ -35,7 +35,7 @@ the following additions:
 * Use a single `.env.example` file for all environments
 * Use environment specific config settings in config/general.php, dependent on CRAFT_ENVIRONMENT variable
 * Added more config settings to config/general.php
-* Added modules/_faux to enable autocompletion for some most frequently used variables in twig
+* Added modules/faux to enable autocompletion for some most frequently used variables in twig. See [modules/faux/README.md](modules/faux/README.md) for details.
 * Added /web/cpresources, /node_modules, /config/license.key to .gitignore
 * Added setup/install for automated installation under ddev, creates a user with user defined username/password.
 
@@ -53,6 +53,7 @@ the following additions:
 * Added german translations
 * Added seed controller and example images to create dummy content
 * Store all files that can be dynamically recreate in a single /web/dist directory (CP resources, Vite assets, image transforms)
+* Prepared prettier config including .twig files
 
 We tried to add a lot of comments to the code, so you can easily follow along.
 
@@ -101,6 +102,15 @@ Untested...
 * [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography) and [@tailwindcss/forms](https://github.com/tailwindlabs/tailwindcss-forms) plugins.
 * [Alpine JS 3](https://alpinejs.dev/start-here) for interactivity. Only used for the mobile navigation.
 * [@alpinejs/focus](https://alpinejs.dev/plugins/focus) for focus/keyboard handling inside the mobile navigation.
+
+## Prettier
+
+Added prettier config for formatting code including `.twig` files.
+
+This does nothing out of the box, until
+
+* You configure your IDE to use it. See [docs for PhpStorm](https://www.jetbrains.com/help/phpstorm/prettier.html#ws_prettier_configure).
+* You run `ddev npm run prettier` to format all files.
 
 ## Matrix vs CKEditor
 

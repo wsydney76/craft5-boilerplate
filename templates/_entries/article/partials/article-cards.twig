@@ -13,8 +13,7 @@
         {% embed '_layouts/partials/cards-wrapper.twig' %}
             {% block cards %}
                 {% for entry in entries %}
-
-                    {# Wrap in additional tag so that cards keep their individual height  #}
+                    {# Wrap in additional tag so that cards keep their individual height #}
                     <article>
                         {# The card embed #}
                         {# entry: the {with} list must include variables used in the embed itself,
@@ -23,14 +22,15 @@
                          Live articles should always have a featured image (defined as required)
                          but drafts may not, so we use a fallback image in order to avoid messing up the layout.
                         #}
-                        {% embed '_layouts/partials/card.twig' with {
-                            title: entry.title,
-                            url: entry.url,
-                            image: entry.featuredImage.eagerly().one ?? siteSettings.defaultFeaturedImage.one,
-                            entry
-                        } only %}
-
-                            {# Section specific content #}
+                        {% embed '_layouts/partials/card.twig'
+                            with {
+                                title: entry.title,
+                                url: entry.url,
+                                image: entry.featuredImage.eagerly().one
+                                    ?? siteSettings.defaultFeaturedImage.one,
+                                entry
+                            } only
+                        %}
                             {% block content %}
                                 {% if entry.teaser %}
                                     <div class="mt-2">
@@ -44,17 +44,11 @@
                             {% endblock content %}
                         {% endembed %}
                     </article>
-
                 {% endfor %}
             {% endblock cards %}
         {% endembed %}
     </div>
 
-
     {# Page navigation #}
-    {% include '_layouts/partials/pagination.twig' with {
-        pageInfo
-    } only %}
-
-
+    {% include '_layouts/partials/pagination.twig' with { pageInfo } only %}
 {% endif %}

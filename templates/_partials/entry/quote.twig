@@ -1,38 +1,30 @@
 {# @param entry Entry #}
 
-{# Opting out of Tailwinds prose styling and doing our own thing.  #}
+{# Opting out of Tailwinds prose styling and doing our own thing. #}
 
-<div class="my-8 not-prose">
+<div class="not-prose my-8">
     {% switch entry.quoteStyle.value ?? 'default' %}
-
-    {% case "bordersTopBottom" %}
-
-        <blockquote class="lg:-mx-24 border-t-2 border-b-2 border-b-slate-800 py-6 text-slate-800 text-center">
-            <div class="text-2xl uppercase">
-                {# Use static translations for language-specific quotation marks #}
-                {# There is a <q> element, but that is not intended for use inside a <blockquote> #}
-                {{ '“'|t }}{{ entry.text|nl2br }}{{ '”'|t }}
-            </div>
-            {% if entry.cite %}
-                <cite class="block mt-8 text-lg italic">
-                    {{ entry.cite }}
-                </cite>
-            {% endif %}
-        </blockquote>
-
-    {% default %}
-
-        <blockquote class="border-l-4 border-slate-400 px-8 py-2">
-            <div class="font-semibold font-serif text-lg  text-slate-600">
-                {{ '“'|t }}{{ entry.text|nl2br }}{{ '”'|t }}
-            </div>
-            {% if entry.cite %}
-                <cite class="block mt-4 text-lg text-slate-800 italic">
-                    {{ entry.cite }}
-                </cite>
-            {% endif %}
-        </blockquote>
-
+        {% case 'bordersTopBottom' %}
+            <blockquote
+                class="border-t-2 border-b-2 border-b-slate-800 py-6 text-center text-slate-800 lg:-mx-24"
+            >
+                <div class="text-2xl uppercase">
+                    {# Use static translations for language-specific quotation marks #}
+                    {# There is a <q> element, but that is not intended for use inside a <blockquote> #}
+                    {{ '“'|t }}{{ entry.text|nl2br }}{{ '”'|t }}
+                </div>
+                {% if entry.cite %}
+                    <cite class="mt-8 block text-lg italic">{{ entry.cite }}</cite>
+                {% endif %}
+            </blockquote>
+        {% default %}
+            <blockquote class="border-l-4 border-slate-400 px-8 py-2">
+                <div class="font-serif text-lg font-semibold text-slate-600">
+                    {{ '“'|t }}{{ entry.text|nl2br }}{{ '”'|t }}
+                </div>
+                {% if entry.cite %}
+                    <cite class="mt-4 block text-lg text-slate-800 italic">{{ entry.cite }}</cite>
+                {% endif %}
+            </blockquote>
     {% endswitch %}
 </div>
-

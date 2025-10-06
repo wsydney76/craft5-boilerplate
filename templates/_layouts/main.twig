@@ -2,97 +2,91 @@
 {# By convention, in this project there are no web pages that are not backed by an entry #}
 <!DOCTYPE html>
 <html lang="{{ currentSite.language }}" style="overflow-y: scroll; overflow-x: hidden;">
-{# overflow-y: scroll: Always show vertical scrollbar, avoid anoying shifts #}
-{# overflow-x: hidden; Don't show horizontal scrollbar image block is set to 'Full width' #}
-{# Defining this as inline styles avoids flickering before Tailwind kicks in. #}
+    {# overflow-y: scroll: Always show vertical scrollbar, avoid anoying shifts #}
+    {# overflow-x: hidden; Don't show horizontal scrollbar image block is set to 'Full width' #}
+    {# Defining this as inline styles avoids flickering before Tailwind kicks in. #}
 
-{# The head html #}
-{% include '_layouts/partials/head.twig' with {
-    entry
-} only %}
+    {# The head html #}
+    {% include '_layouts/partials/head.twig' with { entry } only %}
 
-{# Don't use pure black/white. We use 'slate' as the preferred gray color flavor in this project. #}
-<body class="bg-slate-50 text-slate-900">
+    {# Don't use pure black/white. We use 'slate' as the preferred gray color flavor in this project. #}
+    <body class="bg-slate-50 text-slate-900">
+        {# For keyboard navigation: Jump to content, skip navigation stuff #}
+        <a class="sr-only text-xl focus:not-sr-only" href="#content">{{ 'Skip to content'|t }}</a>
 
-{# For keyboard navigation: Jump to content, skip navigation stuff #}
-<a class="sr-only text-xl focus:not-sr-only" href="#content">{{ 'Skip to content'|t }}</a>
-
-{# The header section #}
-{% block header %}
-    {# Let templates define a featured image by setting a 'featuredImage' variable #}
-    {% include '_layouts/partials/header.twig' with {
-        entry,
-        featuredImage: featuredImage ?? null
-    } only %}
-    {# The endblock can optionally repeat the block name,
+        {# The header section #}
+        {% block header %}
+            {# Let templates define a featured image by setting a 'featuredImage' variable #}
+            {% include '_layouts/partials/header.twig' with {
+                entry,
+                featuredImage: featuredImage ?? null
+            } only %}
+            {# The endblock can optionally repeat the block name,
     for better orientation in templates with a lot nested blocks #}
-{% endblock header %}
+        {% endblock header %}
 
-{# Let extending templates request the content width by setting a layoutMaxWidth variable #}
-{% block main %}
-    {# Use Tailwind's default breakpoints
+        {# Let extending templates request the content width by setting a layoutMaxWidth variable #}
+        {% block main %}
+            {# Use Tailwind's default breakpoints
     see https://tailwindcss.com/docs/theme#default-theme-variable-reference #}
 
-    {# Lookup table available max widths #}
-    {% set maxWidthClass = {
-        md: 'max-w-(--breakpoint-md)',
-        lg: 'max-w-(--breakpoint-lg)'
-    } %}
+            {# Lookup table available max widths #}
+            {% set maxWidthClass = {
+                md: 'max-w-(--breakpoint-md)',
+                lg: 'max-w-(--breakpoint-lg)'
+            } %}
 
-    {# Use default 'md' if no layoutMaxWidth variable is set #}
-    <main class="{{ maxWidthClass[layoutMaxWidth ?? 'md'] }} mx-auto px-4">
-
-        {# Use nested blocks so that extending templates
+            {# Use default 'md' if no layoutMaxWidth variable is set #}
+            <main class="{{ maxWidthClass[layoutMaxWidth ?? 'md'] }} mx-auto px-4">
+                {# Use nested blocks so that extending templates
         have a choice whether they want to inherit formatting or not #}
-        {% block title %}
-            {# A bit smaller font size on small screens #}
-            <h1 id="content" class="mb-8 text-3xl font-bold md:text-4xl ">
-                {% block titleText %}
-                    {{ entry.title }}
-                {% endblock titleText %}
-            </h1>
-        {% endblock title %}
+                {% block title %}
+                    {# A bit smaller font size on small screens #}
+                    <h1 id="content" class="mb-8 text-3xl font-bold md:text-4xl">
+                        {% block titleText %}
+                            {{ entry.title }}
+                        {% endblock titleText %}
+                    </h1>
+                {% endblock title %}
 
-        {% block teaser %}
-            {# entry.teaser will be null if the current entry's field layout
+                {% block teaser %}
+                    {# entry.teaser will be null if the current entry's field layout
             does not include the teaser custom field #}
-            {% if entry.teaser %}
-                <div class="mb-8 text-lg font-semibold">
-                    {{ entry.teaser }}
-                </div>
-            {% endif %}
-        {% endblock teaser %}
-
-        {# Use nested blocks so that extending templates
-        have a choice whether they want to use prose (rich-text) formatting or not #}
-        {% block content %}
-            {# prose: enables styling with the Tailwind typography plugin. #}
-            {# Used here without any customization, which you may like or not.. #}
-            {# see https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#element-modifiers #}
-            {# max-w-none: don't let the plugin restrict content width #}
-            <article class="prose prose-slate max-w-none">
-                {% block proseContent %}
-                    {# If the current entry's field layout contains the bodyContent matrix field,
-                    render its blocks using templates in _partions/entry/<blockType>.twig #}
-                    {% if entry.bodyContent %}
-                        {{ entry.bodyContent.render }}
+                    {% if entry.teaser %}
+                        <div class="mb-8 text-lg font-semibold">
+                            {{ entry.teaser }}
+                        </div>
                     {% endif %}
-                {% endblock proseContent %}
-            </article>
-        {% endblock content %}
+                {% endblock teaser %}
 
-    </main>
-{% endblock main %}
+                {# Use nested blocks so that extending templates
+        have a choice whether they want to use prose (rich-text) formatting or not #}
+                {% block content %}
+                    {# prose: enables styling with the Tailwind typography plugin. #}
+                    {# Used here without any customization, which you may like or not.. #}
+                    {# see https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#element-modifiers #}
+                    {# max-w-none: don't let the plugin restrict content width #}
+                    <article class="prose prose-slate max-w-none">
+                        {% block proseContent %}
+                            {# If the current entry's field layout contains the bodyContent matrix field,
+                    render its blocks using templates in _partions/entry/<blockType>.twig #}
+                            {% if entry.bodyContent %}
+                                {{ entry.bodyContent.render }}
+                            {% endif %}
+                        {% endblock proseContent %}
+                    </article>
+                {% endblock content %}
+            </main>
+        {% endblock main %}
 
-{# Let extending templates insert additional content #}
-{% block afterContent %}{% endblock afterContent %}
+        {# Let extending templates insert additional content #}
+        {% block afterContent %}
 
-{# The footer section #}
-{% block footer %}
-    {% include '_layouts/partials/footer.twig' with {
-        entry
-    } only %}
-{% endblock footer %}
+        {% endblock afterContent %}
 
-</body>
+        {# The footer section #}
+        {% block footer %}
+            {% include '_layouts/partials/footer.twig' with { entry } only %}
+        {% endblock footer %}
+    </body>
 </html>
