@@ -109,10 +109,10 @@ Added prettier config for formatting code including `.twig` files.
 
 This does nothing out of the box, until
 
-* You configure your IDE to use it. See [docs for PhpStorm](https://www.jetbrains.com/help/phpstorm/prettier.html#ws_prettier_configure).
-* You run `ddev npm run prettier-templates` or `ddev npm run prettier-modules` to format files in `templates` or `modules` directory.
+* you configure your IDE to use it. For PhpStorm: see [docs](https://www.jetbrains.com/help/phpstorm/prettier.html#ws_prettier_configure). Also, Settings -> Keymap -> Plugins -> Prettier for keyboard shortcuts.
+* you run `ddev npm run prettier-templates` or `ddev npm run prettier-modules` to format files in `templates` or `modules` directory.
 
-While you like or (more likely) dislike the opinionated formatting of prettier, the main reason it is included here is that (to our knowledge) is the only way to order tailwind classes automatically.
+While you like or (more likely) dislike the opinionated formatting of prettier, the main reason it is included here is that is the only way (to our knowledge) to order tailwind classes automatically.
 
 ### Used packages
 
